@@ -15031,27 +15031,55 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./Auth/Login": [
+		"./resources/js/Pages/Auth/Login.vue",
+		1,
+		3,
+		5
+	],
+	"./Auth/Login.vue": [
+		"./resources/js/Pages/Auth/Login.vue",
+		1,
+		3,
+		5
+	],
+	"./Auth/Register": [
+		"./resources/js/Pages/Auth/Register.vue",
+		2
+	],
+	"./Auth/Register.vue": [
+		"./resources/js/Pages/Auth/Register.vue",
+		2
+	],
 	"./Dashboard/Index": [
 		"./resources/js/Pages/Dashboard/Index.vue",
-		0,
 		1,
-		2
+		7,
+		6
 	],
 	"./Dashboard/Index.vue": [
 		"./resources/js/Pages/Dashboard/Index.vue",
-		0,
 		1,
-		2
+		7,
+		6
+	],
+	"./Layout/Auth": [
+		"./resources/js/Pages/Layout/Auth.vue",
+		0
+	],
+	"./Layout/Auth.vue": [
+		"./resources/js/Pages/Layout/Auth.vue",
+		0
 	],
 	"./Layout/Layout": [
 		"./resources/js/Pages/Layout/Layout.vue",
-		0,
-		1
+		1,
+		7
 	],
 	"./Layout/Layout.vue": [
 		"./resources/js/Pages/Layout/Layout.vue",
-		0,
-		1
+		1,
+		7
 	]
 };
 function webpackAsyncContext(req) {

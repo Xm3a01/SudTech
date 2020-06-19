@@ -17,13 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Dashboard/Index',['title'=> 'DASHBORD']);
-});
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::get('/', 'Dashboard\IndexController@index')->name('dashboard');
+    Route::resource('cvs', 'Dashboard\CvController');
+    Route::resource('jobs', 'Dashboard\JobController');
+    Route::resource('users', 'Dashboard\UserController');
+});

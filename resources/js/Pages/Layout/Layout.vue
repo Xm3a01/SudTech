@@ -1,7 +1,7 @@
 <template>
  <div class="flex flex-col md:flex-row">
-    <!-- Start side bar -->
 
+    <!-- Start side bar -->
     <aside class="w-full md:w-64 bg-gray-800 md:min-h-screen">
         <div class="flex items-center justify-between bg-gray-900 p-4 h-16">
             <a href="#" class="flex items-center">
@@ -77,8 +77,8 @@
             </ul>
         </div>
     </aside>
-
     <!-- End side bar -->
+
       <div class="w-full md:flex-1">
            <nav class="hidden md:flex justify-between items-center bg-gray-900 p-4 shadow-md h-16">
                <div></div>
@@ -105,11 +105,11 @@
                    </div>
                   </div>
                </div>
-            <main>
+              <main>
                 <div class="px-8 py-6">
                    <slot />
                </div>
-            </main>
+         </main>
      </div>
  </div>
 </template>
@@ -127,7 +127,8 @@
     methods:{
           logout() {
               this.$inertia.post('logout')
-                .then(()=>{location.reload() })
+                .then(()=>{location = '/login'})
+                  .catch((err)=>{console.log(err.getMessage())})
           },
           settingPanel(){
               if(this.account){

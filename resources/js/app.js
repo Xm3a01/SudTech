@@ -4,6 +4,7 @@ import Vue from 'vue'
 
 Vue.use(InertiaApp)
 
+
 const app = document.getElementById('app')
 
 new Vue({
