@@ -18,8 +18,8 @@
                 <div class="flex justify-between items-center mt-6">
                     <a href="#" class="text-gray-600 text-sm hover:text-gray-500">Forget password?</a>
                     <button type="submit"
-                            class="py-1 px-4 bg-gray-700 text-sm text-white rounded hover:bg-gray-600 focus:outline-none">
-                            Login
+                            class="py-1 px-4 bg-gray-700 text-sm text-white focus:bg-gray-600 rounded hover:bg-gray-600 focus:outline-none flex">
+                          <span class="lds-dual-ring mr-1 mt-1" v-if="loading"></span>  Login
                     </button>
                 </div>
             </form>
@@ -34,13 +34,15 @@
 
 <script>
 import {AtomSpinner} from 'epic-spinners'
-import Auth from '../Layout/Auth'
+import Auth from '../Layouts/Auth'
 export default {
     components:{
         Auth
     },
     data() {
         return {
+            loading:false,
+
             form:{
                 email:'',
                 password:''
@@ -51,10 +53,38 @@ export default {
 
     methods:{
         login(){
+            this.loading = true
             this.$inertia.post('login' , this.form)
-              .then(()=>{})
+              .then(()=>{this.loading = false})
                  .catch((err)=>{console.log(err.getMessage())})
         }
     }
 }
 </script>
+
+
+<style>
+  .lds-dual-ring {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+.lds-dual-ring:after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

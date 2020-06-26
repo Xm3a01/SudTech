@@ -15035,51 +15035,53 @@ var map = {
 		"./resources/js/Pages/Auth/Login.vue",
 		1,
 		3,
-		5
+		6
 	],
 	"./Auth/Login.vue": [
 		"./resources/js/Pages/Auth/Login.vue",
 		1,
 		3,
-		5
+		6
 	],
 	"./Auth/Register": [
 		"./resources/js/Pages/Auth/Register.vue",
-		2
+		1,
+		7
 	],
 	"./Auth/Register.vue": [
 		"./resources/js/Pages/Auth/Register.vue",
-		2
+		1,
+		7
 	],
 	"./Dashboard/Index": [
 		"./resources/js/Pages/Dashboard/Index.vue",
 		1,
-		7,
-		6
+		5,
+		8
 	],
 	"./Dashboard/Index.vue": [
 		"./resources/js/Pages/Dashboard/Index.vue",
 		1,
-		7,
-		6
+		5,
+		8
 	],
-	"./Layout/Auth": [
-		"./resources/js/Pages/Layout/Auth.vue",
-		0
+	"./Layouts/Auth": [
+		"./resources/js/Pages/Layouts/Auth.vue",
+		4
 	],
-	"./Layout/Auth.vue": [
-		"./resources/js/Pages/Layout/Auth.vue",
-		0
+	"./Layouts/Auth.vue": [
+		"./resources/js/Pages/Layouts/Auth.vue",
+		4
 	],
-	"./Layout/Layout": [
-		"./resources/js/Pages/Layout/Layout.vue",
+	"./Layouts/dashboard": [
+		"./resources/js/Pages/Layouts/dashboard.vue",
 		1,
-		7
+		5
 	],
-	"./Layout/Layout.vue": [
-		"./resources/js/Pages/Layout/Layout.vue",
+	"./Layouts/dashboard.vue": [
+		"./resources/js/Pages/Layouts/dashboard.vue",
 		1,
-		7
+		5
 	]
 };
 function webpackAsyncContext(req) {
@@ -15145,8 +15147,8 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\Projects\inertia-exam\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\Projects\inertia-exam\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! E:\Projects\Inertia-exam\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\Projects\Inertia-exam\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

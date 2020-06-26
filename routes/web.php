@@ -2,6 +2,7 @@
 
 use App\User;
 use Inertia\Inertia;
+use App\Mail\SendJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,17 @@ Auth::routes();
 Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
 
     Route::get('/', 'Dashboard\IndexController@index')->name('dashboard');
-    Route::resource('cvs', 'Dashboard\CvController');
     Route::resource('jobs', 'Dashboard\JobController');
     Route::resource('users', 'Dashboard\UserController');
+});
+
+Route::any('email', function () {
+    // try{
+    // \Mail::to('mohamed29w@gmail.com')->send(new SendJob());
+    // return "Done";
+    // } catch(Exception $e) {
+    //     return $e->getMessage();
+    // }
+
+    return new SendJob();
 });

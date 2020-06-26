@@ -114,7 +114,7 @@
     </Layout>
 </template>
 <script>
-import Layout from '../Layout/Layout';
+import Layout from '../Layouts/dashboard';
 export default {
    components:{
        Layout
