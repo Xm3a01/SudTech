@@ -1,8 +1,12 @@
 /node_modules
 /public/hot
 /public/storage
+/public/css
+/public/js
+/public/*.js
 /storage/*.key
 /vendor
+package-lock.json
 yarn.lock
 .env
 .env.backup
