@@ -1,7 +1,14 @@
 module.exports = {
   purge: [
-    './resources/views/**/*.blade.php',
-    './resources/css/**/*.css',
+    "app/**/*.php",
+    "resources/**/*.html",
+    "resources/**/*.js",
+    "resources/**/*.jsx",
+    "resources/**/*.ts",
+    "resources/**/*.tsx",
+    "resources/**/*.php",
+    "resources/**/*.vue",
+    "resources/**/*.twig"
   ],
   theme: {
     extend: {}

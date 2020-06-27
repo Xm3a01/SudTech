@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+yarn.lock
 .env
 .env.backup
 .phpunit.result.cache
