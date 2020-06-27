@@ -129,7 +129,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Layout: _Layouts_dashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  },
+  props: ['user']
 });
 
 /***/ }),
@@ -149,7 +150,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("Layout", { attrs: { title: "SUDTECH" } }, [
+  return _c("Layout", { attrs: { title: "SUDTECH", user: _vm.user } }, [
     _c("div", { staticClass: "mx-auto w-full" }, [
       _c("div", [
         _c("div", { staticClass: "flex flex-wrap -mx-4" }, [
@@ -455,7 +456,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("h2", [_vm._v("Hello Me")])
+      _c("h2", [_vm._v(_vm._s(_vm.user.name))])
     ])
   ])
 }

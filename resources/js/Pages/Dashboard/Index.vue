@@ -1,5 +1,5 @@
 <template>
-    <Layout title="SUDTECH">
+    <Layout title="SUDTECH" :user="user">
 
        <div class="mx-auto w-full">
         <div>
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </div>
-     <h2>Hello Me</h2>
+     <h2>{{user.name}}</h2>
     </div>
     </Layout>
 </template>
@@ -118,6 +118,8 @@ import Layout from '../Layouts/dashboard';
 export default {
    components:{
        Layout
-   }
+   },
+
+   props:['user']
 }
 </script>

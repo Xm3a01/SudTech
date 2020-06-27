@@ -125,8 +125,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title'],
+  props: ['title', 'user'],
   data: function data() {
     return {
       isOpen: false,
@@ -501,6 +508,20 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "text-center" }, [
+                  _c(
+                    "a",
+                    { staticClass: "hover:text-gray-500", attrs: { href: "" } },
+                    [
+                      _c("div", { staticClass: "flex px-3 my-3" }, [
+                        _c("h2", { staticClass: "text-sm text-gray-400" }, [
+                          _vm._v(_vm._s(_vm.user.name))
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "h-px w-full bg-gray-300" }),
+                  _vm._v(" "),
                   _c(
                     "a",
                     { staticClass: "hover:text-gray-500", attrs: { href: "" } },
