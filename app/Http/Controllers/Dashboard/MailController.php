@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Visitor;
+use App\Mail\SendJob;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CvController extends Controller
+class MailController extends Controller
 {
     public function index()
     {
-        //
+        $mails = Visitor::all();
+      try{
+        \Mail::to($mails)->send(new SendJob());
+        return "Done";
+        } catch(Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     public function create()
