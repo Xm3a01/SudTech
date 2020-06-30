@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('/dashboard/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/dashboard/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/login', 'HomeController@login')->name('login');
+Route::get('/register', 'HomeController@register')->name('register');
+Route::get('/job/show', 'JobController@show')->name('job.show');
+Route::get('/job/create', 'JobController@create')->name('job.create');
 
 Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
 

@@ -1,8 +1,10 @@
 
 import { InertiaApp } from "@inertiajs/inertia-vue";
 import Vue from "vue";
+import CKEditor from 'ckeditor4-vue';
 
 Vue.use(InertiaApp);
+Vue.use( CKEditor );
 
 const app = document.getElementById("app");
 
