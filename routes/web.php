@@ -32,14 +32,10 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::resource('jobs', 'Dashboard\JobController');
     Route::resource('users', 'Dashboard\UserController');
 });
+Route::get('email', 'Dashboard\MailController@index')->name('email');
 
-Route::any('email', function () {
-    // try{
-    // \Mail::to('mohamed29w@gmail.com')->send(new SendJob());
-    // return "Done";
-    // } catch(Exception $e) {
-    //     return $e->getMessage();
-    // }
+// Route::any('email', function () {
 
-    return new SendJob();
-});
+
+//     return new SendJob();
+// });
