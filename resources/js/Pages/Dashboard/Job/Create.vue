@@ -1,55 +1,62 @@
 <template>
 
-    <app>
-        <div class="container mx-auto px-4 mb-12">
-            <div class="sm:w-3/4 mx-auto">
+    <dashboard title = "Create job" :user = "user">
+      <div class="bg-gray-100 p-6 rounded shadow overflow-y-auto" style="height:550px">
+        <h2 class="text-2xl font-medium mb-5 text-gray-500 uppercase">New job</h2>
+         <div class="container w-9/12 mx-auto px-4 mb-12 mt-8">
+         <form  @submit.prevent="Onsubmit">
+            <div class=" sm:w-3/4 mx-auto">
                 <div>
                     <div class="mb-4">
                         <label for="job title" class="uppercase">job title</label>
-                        <input type="name" class="px-3 py-1 rounded-lg bg-gray-200 w-full">
+                        <input type="name" v-model="fields.job_title"
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100">
                         <span class="text-second-gray text-sm">Example: Senior Laravel Developer</span>
                     </div>
 
                     <div class="mb-4">
                         <label for="job location" class="uppercase">job location</label>
-                        <input type="texr" class="px-3 py-1 rounded-lg bg-gray-200 w-full">
+                        <input type="text" v-model="fields.job_location"
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100">
                         <span class="text-second-gray text-sm">Example: “Remote”, “Remote, Khartoum Only”,
                             “Khartoum”</span>
                     </div>
 
                     <div class="mb-4">
                         <label for="tags" class="uppercase">tags</label>
-                        <multiselect v-model="value" tag-placeholder="Add this as new tag" class="px-3 py-1 rounded-lg bg-gray-200 w-full"
+                        <multiselect v-model="fields.tags" tag-placeholder="Add this as new tag" class="px-3 py-1 rounded-lg bg-gray-200 w-full"
                         placeholder="Search or add a tag" label="name" track-by="code" :options="options" :multiple="true"
-                         @tag="addTag" :max="5"></multiselect>
+                         @tag="addTag" :max="4"></multiselect>
                         <span class="text-second-gray text-sm">Max of Five Tags</span>
                     </div>
 
                     <div class="mb-4">
                         <label for="company Name" class="uppercase">company Name</label>
-                        <input type="text" class="px-3 py-1 rounded-lg bg-gray-200 w-full">
+                        <input type="text" v-model="fields.company_name"
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100">
                     </div>
 
                     <div class="mb-4">
                         <label for="job description" class="uppercase">job description</label>
-                        <ckeditor v-model="job_description" :config="editorConfig"></ckeditor>
+                        <ckeditor v-model="fields.job_description" :config="editorConfig" ></ckeditor>
                     </div>
 
                     <div class="mb-4">
                         <label for="job responsibilities" class="uppercase">job responsibilities</label>
                         <span class="text-primary ml-3 text-xs">(optional)</span>
-                        <ckeditor v-model="job_responsibilities" :config="editorConfig"></ckeditor>
+                        <ckeditor v-model="fields.job_responsibilities" :config="editorConfig"></ckeditor>
                     </div>
 
                     <div class="mb-4">
                         <label for="job requirements" class="uppercase">job requirements</label>
                         <span class="text-primary ml-3 text-xs">(optional)</span>
-                        <ckeditor v-model="job_requirements" :config="editorConfig"></ckeditor>
+                        <ckeditor v-model="fields.job_requirements" :config="editorConfig"></ckeditor>
                     </div>
 
                     <div class="mb-4">
                         <label for="apply url" class="uppercase" :class="{ 'text-gray-300': focusedEmail }">apply url</label>
-                        <input type="text" v-model="url" class="px-3 py-1 rounded-lg bg-gray-200 w-full"
+                        <input type="text" v-model="fields.url" 
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
                         :class="[focusedEmail ? 'bg-gray-100' : 'bg-gray-200']"
                         @focus="focusUrl" @blur="blurUrl">
                     </div>
@@ -58,7 +65,9 @@
 
                     <div class="mb-4">
                         <label for="apply email" class="uppercase" :class="{ 'text-gray-300': focusedUrl }">apply email</label>
-                        <input type="text" v-model="email" class="px-3 py-1 rounded-lg bg-gray-200 w-full" :class="[focusedUrl ? 'bg-gray-100' : 'bg-gray-200']"
+                        <input type="text" v-model="fields.email" 
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100" 
+                        :class="[focusedUrl ? 'bg-gray-100' : 'bg-gray-200']"
                         @focus="focusEmail" @blur="blurEmail">
                         <span class="text-sm" :class="[focusedUrl ? 'text-gray-300' : 'text-second-gray']">
                           This email is public, the Apply button links to it if you
@@ -69,7 +78,8 @@
                     <div class="mb-4">
                         <label for="company Logo" class="uppercase">company Logo</label>
                         <span class="text-primary ml-3 text-xs">(optional)</span>
-                        <input type="file" class="px-3 py-1 rounded-lg bg-gray-200 w-full">
+                        <input type="file"  @change="onInputChange"
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100">
                     </div>
 
                     <div class="mb-4">
@@ -84,30 +94,34 @@
 
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button
+                    <button type="submit"
                         class="px-4 py-2 rounded-sm hover:bg-white hover:text-secondary font-bold border-2 border-secondary bg-secondary text-white focus:outline-none">
                         Post Job
                     </button>
                 </div>
             </div>
+         </form>
         </div>
-    </app>
+    </div>
+</dashboard>
 
 </template>
 
 <script>
-    import App from './../Layouts/App'
+    import Dashboard from './../../Layouts/dashboard'
     import Multiselect from 'vue-multiselect'
 
     export default {
         components: {
-            App,
+            Dashboard,
             Multiselect,
         },
-        props: {},
+        props: ['user','tags'],
         data() {
             return {
 
+                fields:{},
+                path: '',
                 job_description: '',
                 job_responsibilities: '',
                 job_requirements: '',
@@ -116,11 +130,7 @@
                 email:'',
                 url:'',
                 value: [],
-                options: [
-                    { name: 'Vue.js', code: 'vu' },
-                    { name: 'Javascript', code: 'js' },
-                    { name: 'Open Source', code: 'os' }
-                ],
+                options: this.tags,
                 editorConfig: {
                     // The configuration of the editor.
                     toolbar: [
@@ -164,6 +174,30 @@
             }
             this.options.push(tag)
             this.value.push(tag)
+        },
+
+        onInputChange(e) {
+
+            const file = e.target.files[0];
+            this.path = file;
+
+            console.log(this.path)
+        },
+
+        Onsubmit(){
+            const formData = new FormData();
+            formData.append('logo', this.path);
+
+             _.each(this.fields, (value, key) => {
+                 formData.append(key, value)
+             })
+             console.log(formData)
+             this.$inertia.post('/dashboard/jobs',formData)
+                 .then((res)=>{
+                     console.log(res)
+                 }).catch((err)=>{
+                     console.log(err)
+                 })
         }
 
         },

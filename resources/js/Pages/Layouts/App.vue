@@ -1,10 +1,10 @@
 <template>
-    <div class="bg-white font-roboto font-medium">
+    <div class="bg-gray-200 font-roboto font-medium">
         <Header />
 
         <div>
-            <a class="block sm:hidden text-center text-primary text-5xl">
-                <inertia-link href="/">sudtech</inertia-link>
+            <a class="block sm:hidden bg-dark  text-center text-primary text-5xl">
+                <inertia-link href="/">SUD<span class="text-red-500">TE</span>CH</inertia-link>
                 <!-- <inertia-link class="btn btn-primary" :href="$route('lead.view', {lead: lead})">
                     Edit
                 </inertia-link> -->

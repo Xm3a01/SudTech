@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Psy\Util\Str;
+use Carbon\Carbon;
+use App\Models\Job;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -24,7 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return Inertia::render('App/Index');
+
+        $olders =  Job::where('created_at' ,'<=', Carbon::now()->subWeeks(4)->addDays(2))->get();
+        $newers =  Job::where('created_at' ,'>', Carbon::now()->subWeeks(4)->addDays(2))->get();
+        //delete
+         Job::where('created_at' ,'<', Carbon::now()->subWeeks(8)->addDays(4))->delete();
+
+        return Inertia::render('App/Index',['olders' => $olders , 'newers' => $newers]);
     }
 
     public function login()

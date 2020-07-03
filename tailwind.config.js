@@ -15,6 +15,10 @@ module.exports = {
         spacing:{
             '4/3': '4.3rem',
         },
+        width: {
+          '3/10' : '144%',
+          '33' : '8.44rem'
+        },
         fontFamily: {
             // roboto: ['Roboto'],
         },

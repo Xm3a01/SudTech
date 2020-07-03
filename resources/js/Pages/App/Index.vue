@@ -2,42 +2,50 @@
 
     <app>
 
-        <div>
-
-            <div class="block text-center pb-8 border-b border-light-gray">
-                <div class="text-third text-6xl">
-                    sudtech job board
-                </div>
-                <div class="px-1 text-second-gray text-2xl">
-                    sudtech job board connecting the best jobs with top talent
-                </div>
-            </div>
-
-            <div class="md:flex py-1 px-4 mt-8 justify-between mx-auto w-9/12 md:w-3/5 bg-gray-200">
+            <!-- Munzier input search -->
+            <!-- <div class="md:flex py-1 px-4 mt-8 justify-between mx-auto w-9/12 md:w-3/5 bg-gray-200">
                 <div class="mb-2 md:w-2/3 md:mb-0">
-                <input type="text" class="h-full w-full px-2 py-3 text-xl md:py-0">
+                <input type="text" class="h-full w-full px-2 py-3 text-xl md:py-0"> -->
                     <!-- <select class="h-full w-full py-3 md:py-0" name="" id="">
                         <option value=""></option>
                     </select> -->
-                </div>
+                <!-- </div>
                 <div>
                     <button
                         class="px-8 py-2 text-2xl w-full hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">Search</button>
                 </div>
+            </div> -->
+
+            <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
+                <div class="box-wrapper">
+
+                    <div class=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
+                      <button @click="getImages()" class="outline-none focus:outline-none"><svg class=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                      <input type="search" name="" id="" @keydown.enter="getImages()" placeholder="search for job" x-model="q" class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent">
+                      <div class="select">
+                        <select name="" id="" x-model="image_type" class="text-sm outline-none focus:outline-none bg-transparent">
+                          <option value="all" selected>All</option>
+                          <option value="New">New</option>
+                          <option value="Older">Older</option>
+                         </select>
+                      </div>
+                    </div>
+                  
+                </div>
             </div>
 
-            <div class="px-4 md:px-16 py-12">
-                <div class="text-xl font-bold">
-                    New Jobs
+            <div class="px-auto mx-auto  py-12 w-9/12 md:w-3/5 ">
+                <div class="text-xl mb-2 text-gray-600 font-bold">
+                    NEW
                 </div>
-                <a v-for="(x, k) in 4" :key="k"
-                    class="border-b border-gray-300 py-2 px-3 w-full flex flex-wrap justify-between hover:bg-gray-200">
+                <a v-for="job in newers" :key="job.id" :class="job.color"
+                    class="border-b border-gray-300 py-2 px-2 w-full flex flex-wrap justify-between hover:bg-gray-200">
                     <div class="flex flex-no-wrap w-full md:w-3/4 flex-col md:flex-row">
                         <div class="md:w-1/2 flex">
                             <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start"
                                 src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
                             <div class="block">
-                                <div class="text-dark text-lg">Senior Full Stack Engineer - Laravel</div>
+                                <div class="font-semibold text-dark w-3/10 text-sm">{{job.name}} Senior Full Stack Engineer - Laravel</div>
                                 <div class="text-dark font-light">Givebutter</div>
                                 <div class="flex">
                                     <button class="fill-current text-second-gray focus:outline-none">
@@ -51,18 +59,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex flex-wrap py-4">
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue.js</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Tailwind
-                                CSS</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</button>
+                        <div class="flex flex-wrap ml-16  py-4 w-auto">
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</span>
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue</span>
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</span>
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</span>
                         </div>
                     </div>
                     <div class="flex justify-end">
@@ -81,30 +86,31 @@
                             <span class="mr-4">1w</span>
                         </div>
                         <div class="flex items-center">
-                            <button
-                                class="px-4 py-2 hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
-                                <inertia-link href="/job/show">Apply</inertia-link>
-                            </button>
+                              <inertia-link href="/job/show"
+                                 class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
+                                Apply
+                             </inertia-link>
                         </div>
                     </div>
                 </a>
 
-                <div class="flex justify-between mt-12">
-                    <div class="text-xl font-bold">
-                        Older Jobs
+                <div class="flex  mb-2 justify-between mt-12">
+                    <div class="text-xl text-gray-600 font-bold">
+                        OLDER
                     </div>
                     <div class="flex text-second-gray items-end justify-end text-sm">
                         Note, these jobs may no longer be available
                     </div>
                 </div>
-                <a v-for="(y, index) in 2" :key="index"
-                    class="border-b border-gray-300 py-2 px-3 w-full flex flex-wrap justify-between hover:bg-gray-200">
+
+                <a v-for="job in olders" :key="job.id" :class="job.color"
+                    class="border-b border-gray-300 bg-red-200 py-2 px-3 w-full flex flex-wrap justify-between hover:bg-gray-200">
                     <div class="flex flex-no-wrap w-full md:w-3/4 flex-col md:flex-row">
                         <div class="md:w-1/2 flex">
                             <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start"
                                 src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
                             <div class="block">
-                                <div class="text-dark text-lg">Senior Full Stack Engineer - Laravel</div>
+                                <div class="font-semibold text-dark w-3/10 text-sm"> {{job.name}} Senior Full Stack Engineer - Laravel</div>
                                 <div class="text-dark font-light">Givebutter</div>
                                 <div class="flex">
                                     <button class="fill-current text-second-gray focus:outline-none">
@@ -118,18 +124,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex flex-wrap py-4 md:py-0">
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue.js</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Tailwind
-                                CSS</button>
-                            <button
-                                class="px-2 py-0 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</button>
+                        <div class="flex flex-wrap ml-16  py-4 w-auto">
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</span>
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue</span>
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</span>
+                            <span
+                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</span>
                         </div>
                     </div>
                     <div class="flex justify-end">
@@ -148,15 +151,14 @@
                             <span class="mr-4">1w</span>
                         </div>
                         <div class="flex items-center">
-                            <button
-                                class="px-4 py-2 hover:bg-white hover:text-primary bg-secondary text-white rounded-sm focus:outline-none">
-                                <inertia-link href="/job/show">Apply</inertia-link>
-                            </button>
+                            <inertia-link href="/job/show"
+                                 class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
+                                Apply
+                             </inertia-link>
                         </div>
                     </div>
                 </a>
             </div>
-        </div>
         <!-- End Cards -->
 
     </app>
@@ -169,6 +171,7 @@
         components: {
             App,
         },
+        props:['olders' , 'newers'],
     }
 
 </script>

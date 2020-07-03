@@ -1,4 +1,6 @@
 
+require('./bootstrap');
+
 import { InertiaApp } from "@inertiajs/inertia-vue";
 import Vue from "vue";
 import CKEditor from 'ckeditor4-vue';

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Visitor;
+use App\Models\Visitor;
 use App\Mail\SendJob;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

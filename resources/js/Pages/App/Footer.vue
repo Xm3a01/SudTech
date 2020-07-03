@@ -1,5 +1,5 @@
 <template>
-    <div class="block bg-footer text-center">
+    <div class="block bg-dark border-t-2 border-blue-300 text-center">
         <div class="pb-10 pt-8 text-gray-500">
             <a class="hover:text-gray-400 ml-3" href="#">Home</a>
             <a class="hover:text-gray-400 ml-3" href="#">Contact</a>

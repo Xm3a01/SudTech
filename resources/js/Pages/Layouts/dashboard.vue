@@ -20,7 +20,7 @@
         </div>
         <div class="px-2 py-6 md:block" :class="isOpen? 'block': 'hidden'">
             <ul>
-                <li class="px-2 py-2 text-sm  bg-gray-900">
+                <li class="px-2 py-2 text-sm  " :class="title == 'SUDTECH' ? 'bg-gray-900' : 'hover:bg-gray-900'">
                     <inertia-link href ="/dashboard" class="flex items-center">
                         <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
                              stroke-linejoin="round"
@@ -32,7 +32,7 @@
                         <span class="mx-2 text-gray-300"> Dashboard</span>
                     </inertia-link>
                 </li>
-                <li class="px-2 py-2 text-sm  hover:bg-gray-900 w-full mt-2">
+                <li class="px-2 py-2 text-sm w-full mt-2" :class="title == 'Dashboard . Jobs' || title == 'Create job' ? 'bg-gray-900' : 'hover:bg-gray-900'">
                     <inertia-link href="/dashboard/jobs"  @click="loading= true" class="flex items-center">
                         <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
                              stroke-linejoin="round"
@@ -82,7 +82,7 @@
       <div class="w-full md:flex-1">
            <nav class="hidden md:flex justify-between items-center bg-gray-900 p-4 shadow-md h-16">
                <div><span class="lds-dual-ring mr-1 mt-1" v-if="loading"></span></div>
-               <div class="image-text py-auto border-2 hover:bg-red-500" @click ="settingPanel">
+               <div class="image-text py-auto border-2 border-red-500 hover:bg-red-500" @click ="settingPanel">
                    <small>30x30</small>
                </div>
             </nav>

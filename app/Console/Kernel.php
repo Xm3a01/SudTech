@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use Carbon\Carbon;
+use App\Models\Job;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +26,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $jobs = Job::all();
+        $schedule->call(function ($jobs) {
+            foreach ($jobs as $key => $value) {
+                $v = ''.Carbon::create((String)$value->created_at)->addWeeks(8);
+                if( $v ==  $value->older_at){
+                    $value->flag = 2;
+                    $value->save();
+                } else if($v < $value->older_at) {
+                    $value->delete();
+                }
+            }
+        })->daily();
     }
 
     /**

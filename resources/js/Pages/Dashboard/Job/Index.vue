@@ -1,5 +1,5 @@
 <template>
-  <Layout title="Dshboard . Jobs" :user="user">
+  <Layout title="Dashboard . Jobs" :user="user">
     <div class="bg-gray-100 p-6 rounded shadow">
         <h2 class="text-2xl font-medium mb-5 text-gray-500 uppercase">Jobs</h2>
         <div class="flex justify-between">
@@ -26,8 +26,8 @@
           </div>
            </div> -->
 
-        <div class="shadow flex rounded">
-            <input class="w-full rounded p-2 focus:boder-blue-500" type="text" placeholder="Search...">
+        <div class="shadow flex  rounded">
+            <input class="w-full rounded p-2 focus:outline-none" type="text" placeholder="Search...">
             <button class=" w-auto flex justify-end items-center text-blue-500 p-2 hover:text-blue-400">
               <img src="/images/search.png" alt="" width="30">
             </button>
@@ -144,7 +144,7 @@
 </template>
 
 <script>
-import Layout from '../Layouts/dashboard'
+import Layout from './../../Layouts/dashboard'
 export default {
 components:{
     Layout
