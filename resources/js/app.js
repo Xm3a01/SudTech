@@ -1,10 +1,11 @@
 
 require('./bootstrap');
-
+import Toasted from 'vue-toasted';
 import { InertiaApp } from "@inertiajs/inertia-vue";
 import Vue from "vue";
 import CKEditor from 'ckeditor4-vue';
 
+Vue.use(Toasted)
 Vue.use(InertiaApp);
 Vue.use( CKEditor );
 

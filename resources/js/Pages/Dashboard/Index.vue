@@ -11,10 +11,10 @@
                             <div class="flex flex-wrap">
                                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                                     <h5 class="text-gray-500 uppercase font-bold text-xs">
-                                        New users
+                                        New Jobs
                                     </h5>
                                     <span class="font-semibold text-xl text-gray-800">
-                          2,356
+                          {{newers}}
                         </span>
                                 </div>
                                 <div class="relative w-auto px-2 flex-initial">
@@ -30,10 +30,10 @@
                             </div>
                             <p class="text-sm text-gray-500 mt-4">
                       <span class="text-red-500 mr-2">
-                        <i class="fas fa-arrow-down"></i> 3.48%
+                        <i class="fas fa-arrow-down"></i>
                       </span>
                                 <span class="whitespace-no-wrap">
-                        Since last week
+                        <!-- Since last week -->
                       </span>
                             </p>
                         </div>
@@ -45,10 +45,10 @@
                             <div class="flex flex-wrap">
                                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                                     <h5 class="text-gray-500 uppercase font-bold text-xs">
-                                        Sales
+                                        Old Jobs
                                     </h5>
                                     <span class="font-semibold text-xl text-gray-800">
-                          924
+                          {{olders}}
                         </span>
                                 </div>
                                 <div class="relative w-auto px-2 flex-initial">
@@ -64,10 +64,10 @@
                             </div>
                             <p class="text-sm text-gray-500 mt-4">
                       <span class="text-orange-500 mr-2">
-                        <i class="fas fa-arrow-down"></i> 1.10%
+                        <i class="fas fa-arrow-down"></i>
                       </span>
-                                <span class="whitespace-no-wrap">
-                        Since yesterday
+                         <span class="whitespace-no-wrap">
+                             <!--  -->
                       </span>
                             </p>
                         </div>
@@ -79,10 +79,10 @@
                             <div class="flex flex-wrap">
                                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                                     <h5 class="text-gray-500 uppercase font-bold text-xs">
-                                        Performance
+                                        Deleted Jobs
                                     </h5>
                                     <span class="font-semibold text-xl text-gray-800">
-                          49,65%
+                          {{deleted}}
                         </span>
                                 </div>
                                 <div class="relative w-auto px-2 flex-initial">
@@ -98,10 +98,9 @@
                             </div>
                             <p class="text-sm text-gray-500 mt-4">
                       <span class="text-green-500 mr-2">
-                        <i class="fas fa-arrow-up"></i> 12%
+                        <i class="fas fa-arrow-up"></i>
                       </span>
-                                <span class="whitespace-no-wrap">
-                        Since last month
+                            <span class="whitespace-no-wrap">
                       </span>
                             </p>
                         </div>
@@ -109,7 +108,6 @@
                 </div>
             </div>
         </div>
-     <h2>{{user.name}}</h2>
     </div>
     </Layout>
 </template>
@@ -120,6 +118,6 @@ export default {
        Layout
    },
 
-   props:['user']
+   props:['user' , 'newers','olders','deleted']
 }
 </script>

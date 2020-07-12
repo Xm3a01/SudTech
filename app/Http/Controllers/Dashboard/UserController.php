@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\User;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -25,12 +28,13 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //
+        return $id;
     }
 
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        return Inertia::render('Dashboard/Setting/Edit',['user' => $user]);
     }
 
     public function update(Request $request, $id)
@@ -41,5 +45,22 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editUser(Request $request , $id)
+    {
+        $user = User::findOrFail($id);
+          if($request->name){
+            $user->name = $request->name;
+          }
+          if($request->email){
+            $user->email = $request->email;
+          }
+          if($request->password){
+            $user->password = \Hash::make($request->password);
+          }
+          $user->save();
+
+          return back()->with('successMessage' , 'Account updated');
     }
 }

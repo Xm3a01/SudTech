@@ -1,20 +1,6 @@
 <template>
 
-    <app>
-
-            <!-- Munzier input search -->
-            <!-- <div class="md:flex py-1 px-4 mt-8 justify-between mx-auto w-9/12 md:w-3/5 bg-gray-200">
-                <div class="mb-2 md:w-2/3 md:mb-0">
-                <input type="text" class="h-full w-full px-2 py-3 text-xl md:py-0"> -->
-                    <!-- <select class="h-full w-full py-3 md:py-0" name="" id="">
-                        <option value=""></option>
-                    </select> -->
-                <!-- </div>
-                <div>
-                    <button
-                        class="px-8 py-2 text-2xl w-full hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">Search</button>
-                </div>
-            </div> -->
+    <app title="SUDTECH">
 
             <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
                 <div class="box-wrapper">
@@ -38,7 +24,7 @@
                 <div class="text-xl mb-2 text-gray-600 font-bold">
                     NEW
                 </div>
-                <a v-for="job in newers" :key="job.id" :class="job.color"
+                <a v-for="job in newers" :key="job.id" :class="job.job_color"
                     class="border-b border-gray-300 py-2 px-2 w-full flex flex-wrap justify-between hover:bg-gray-200">
                     <div class="flex flex-no-wrap w-full md:w-3/4 flex-col md:flex-row">
                         <div class="md:w-1/2 flex">
@@ -61,13 +47,13 @@
                         </div>
                         <div class="flex flex-wrap ml-16  py-4 w-auto">
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</span>
+                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">Laravel</span>
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue</span>
+                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">Vue</span>
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</span>
+                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">React</span>
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</span>
+                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">PHP</span>
                         </div>
                     </div>
                     <div class="flex justify-end">
@@ -104,7 +90,7 @@
                 </div>
 
                 <a v-for="job in olders" :key="job.id" :class="job.color"
-                    class="border-b border-gray-300 bg-red-200 py-2 px-3 w-full flex flex-wrap justify-between hover:bg-gray-200">
+                    class="border-b border-gray-300 bg-yellow-200 py-2 px-3 w-full flex flex-wrap justify-between hover:bg-gray-200">
                     <div class="flex flex-no-wrap w-full md:w-3/4 flex-col md:flex-row">
                         <div class="md:w-1/2 flex">
                             <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start"
@@ -126,13 +112,13 @@
                         </div>
                         <div class="flex flex-wrap ml-16  py-4 w-auto">
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</span>
+                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</span>
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue</span>
+                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue</span>
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</span>
+                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</span>
                             <span
-                                class="px-2 -py-1 mr-1 mb-1 text-sm self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</span>
+                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</span>
                         </div>
                     </div>
                     <div class="flex justify-end">

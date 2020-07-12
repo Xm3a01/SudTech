@@ -25,6 +25,15 @@ import Footer from './../App/Footer';
             Header,
             Footer,
         },
+        props:['title'],
+        watch: {
+         title: {
+            immediate: true,
+            handler(title) {
+            document.title = title
+            },
+          },
+        },
         methods: {
 
         }

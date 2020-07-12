@@ -28,10 +28,10 @@ class HomeController extends Controller
     public function index()
     {
 
-        $olders =  Job::where('created_at' ,'<=', Carbon::now()->subWeeks(4)->addDays(2))->get();
-        $newers =  Job::where('created_at' ,'>', Carbon::now()->subWeeks(4)->addDays(2))->get();
-        //delete
-         Job::where('created_at' ,'<', Carbon::now()->subWeeks(8)->addDays(4))->delete();
+        $newers =  Job::where('created_at' ,'>', Carbon::now()->subWeeks(4)->subDays(2))->where('status', true)->get();
+        $olders =  Job::where('created_at' ,'<', Carbon::now()->subWeeks(4)->subDays(2))->where('status', true)->get(); // 4/6/2020 - 4/7/2020
+        //delete when 2 months left
+         Job::where('created_at' ,'<', Carbon::now()->subWeeks(8)->subDays(4))->delete();
 
         return Inertia::render('App/Index',['olders' => $olders , 'newers' => $newers]);
     }
