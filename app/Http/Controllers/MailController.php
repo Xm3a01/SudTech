@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
-use App\Models\Visitor;
+use Swift;
 use App\Mail\SendJob;
+use App\Models\Visitor;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,11 +14,14 @@ class MailController extends Controller
     public function index()
     {
         $mails = Visitor::all();
-      try{
-        \Mail::to($mails)->send(new SendJob());
+
+        try{
+         foreach($mails as $mail){
+          \Mail::to($mail)->send(new SendJob());
+         }
         return "Done";
-        } catch(Exception $e) {
-            return $e->getMessage();
+        } catch(\Exception $e) {
+            return Str::limit($e->getMessage() , 47);
         }
     }
 

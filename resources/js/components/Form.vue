@@ -4,7 +4,7 @@
              {{ errors[Object.keys(errors)[0]][0] }}
            </div>
            <div v-if="successMessage" class="bg-green-400 text-center font-bold mb-2 z-48 text-gray-900 py-2 rounded">
-        <div class="flex justify-between"><span class="px-4">{{successMessage}} </span> <span class="px-4 font-normal hover:mouse-pointer" @click="dismis"><inertia-link href ="/" class="text-xs">back</inertia-link></span></div>
+        <div class="flex justify-between"><span class="px-4">{{successMessage}} </span> <span class="px-4 font-normal hover:mouse-pointer" @click="dismis"><inertia-link href ="/" class="text-xs border border-blue-300 text-blue-300 rounded-full">Back</inertia-link></span></div>
         </div>
           <h2 class="text-2xl w-9/12 mx-auto font-medium mb-5 text-gray-500 uppercase">New job</h2>
          <div class="container w-9/12 mx-auto px-4 mb-12 mt-8">
@@ -189,8 +189,6 @@
 
             const file = e.target.files[0];
             this.path = file;
-
-            console.log(this.path)
         },
 
         Onsubmit(){

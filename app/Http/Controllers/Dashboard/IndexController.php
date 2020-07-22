@@ -15,10 +15,10 @@ class IndexController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $newers =  Job::where('created_at' ,'>', Carbon::now()->subWeeks(4)->subDays(2))->count();
-        $olders =  Job::where('created_at' ,'<', Carbon::now()->subWeeks(4)->subDays(2))->count();
-        Job::where('created_at' ,'<', Carbon::now()->subWeeks(8)->subDays(4))->delete();
-        $deleted = Job::onlyTrashed()->count();
+        $newers =  $user->jobs()->where('created_at' ,'>', Carbon::now()->subWeeks(4)->subDays(2))->count();
+        $olders =  $user->jobs()->where('created_at' ,'<', Carbon::now()->subWeeks(4)->subDays(2))->count();
+        $user->jobs()->where('created_at' ,'<', Carbon::now()->subWeeks(8)->subDays(4))->delete();
+        $deleted = $user->jobs()->onlyTrashed()->count();
 
         return Inertia::render('Dashboard/Index',['user'=>$user,'olders' => $olders , 'newers' => $newers,'deleted' => $deleted]);
     }
