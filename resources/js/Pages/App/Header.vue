@@ -21,10 +21,10 @@
             <div class="px-20 text-white text-3xl flex justify-start">
                <span class="border-b border-white">SUD<span class="text-red-500">TE</span>CH job board</span>
             </div>
-            <div class="px-20  text-white text-2xl flex  justify-start">
+            <div class="px-20 xs:hidden  text-white text-2xl flex  justify-start">
                 sudtech job board connecting the best jobs with top talent
             </div>
-            <div class="px-20 box  text-white text-sm flex  justify-start">
+            <div class="px-20 box md:hidden  text-white text-sm flex  justify-start">
                 <p> sudtech job board connecting the best jobs with top talent</p>
                 sudtech job board connecting the best jobs with top talent
                 

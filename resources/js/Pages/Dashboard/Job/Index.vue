@@ -1,7 +1,8 @@
 <template>
   <Layout title="Dashboard . Jobs" :user="user">
-      <div v-if="successMessage" class="bg-green-400 text-center font-bold mb-2 z-48 text-gray-900 py-2 rounded">
-        <div class="flex justify-between"><span class="px-4">{{successMessage}} </span> <span class="px-4 font-normal cursor-pointer hover:text-red-700" @click="dismis">x</span></div>
+      <div v-if="successMessage">
+        <!-- <div class="flex justify-between"><span class="px-4">{{successMessage}} </span> <span class="px-4 font-normal cursor-pointer hover:text-red-700" @click="dismis">x</span></div> -->
+        {{message(successMessage )}}
     </div>
     <div class="bg-gray-100 p-6 rounded shadow">
         <h2 class="text-2xl font-medium mb-5 text-gray-500 uppercase">Jobs</h2>
@@ -68,7 +69,7 @@
                                   </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                    We need to devoloer to enjoin our team...
+                                    {{ job.job_description | strippedContent }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
                                     <inertia-link :href="'/dashboard/jobs/'+job.id+'/edit'" class="px-2 py-1 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded">Edit</inertia-link>
@@ -104,7 +105,8 @@ props:['user','jobs','successMessage'],
 data() {
     return {
         all: this.jobs,
-        search:''
+        search:'',
+        des: ''
     }
 },
 
@@ -120,12 +122,33 @@ methods: {
     },
 
     deletejob(id) {
-        this.$inertia.delete('jobs/'+id)
+        swal({ 
+            title: "Confirm delete",
+            text: 'Do you really want to delete?',
+            icon: "error",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete){
+             this.$inertia.delete('jobs/'+id)
+         }
+       })
     },
 
     dismis(){
         this.successMessage = ''
     },
+
+    message(string){
+        swal({ 
+            title: "Success",
+            text: string,
+            icon: "success",
+            // buttons:true
+        });
+      this.dismis();
+    }
 },
 
 computed:{
@@ -137,8 +160,14 @@ computed:{
     } else {
         return this.all.data
     }
+  },
+},
+filters: {
+    strippedContent: function(string) {
+           let des =  string.replace(/<\/?[^>]+>/ig, " "); 
+           return des.substring(0,30) + '...';
+    },
   }
-}
 }
 </script>
 

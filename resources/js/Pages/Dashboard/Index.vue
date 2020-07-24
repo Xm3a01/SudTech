@@ -20,10 +20,15 @@
                                 <div class="relative w-auto px-2 flex-initial">
                                     <div
                                             class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
-                                        <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                        <!-- <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                                              stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
                                             <path
                                                     d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                        </svg> -->
+                                        <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                             stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                         </svg>
                                     </div>
                                 </div>
@@ -54,10 +59,15 @@
                                 <div class="relative w-auto px-2 flex-initial">
                                     <div
                                             class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
-                                        <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                        <!-- <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                                              stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
                                             <path
                                                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                        </svg> -->
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z">
+                                                </path><path fill-rule="evenodd" 
+                                                d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                                         </svg>
                                     </div>
                                 </div>
@@ -88,11 +98,10 @@
                                 <div class="relative w-auto px-2 flex-initial">
                                     <div
                                             class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
-                                        <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                             stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
+                                            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                             stroke-width="2">
+                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                                        
                                     </div>
                                 </div>
                             </div>

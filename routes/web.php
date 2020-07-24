@@ -43,6 +43,9 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
 });
 Route::get('email', 'MailController@index')->name('email');
 
+Route::group(['prefix' => 'admins' , 'middleware' => ['auth','role:super-admin']], function () {
+    Route::resource('/', 'Dashboard\PermissionController');
+});
 // Route::any('trash', function () {
 //     return Inertia::render('Dashboard/Setting/Edit');
 // });
