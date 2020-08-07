@@ -29,7 +29,6 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->color;
         $this->jobValidation($request);
         $job = $this->storeJob($request);
         $job->tags()->sync($request->tags);
@@ -94,7 +93,9 @@ class JobController extends Controller
 
     public function destroy($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->delete();
+        return back()->with('successMessage','deleted done !');
     }
 
     public function storeJob($request)

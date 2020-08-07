@@ -41,8 +41,11 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::resource('trash', 'Dashboard\TrashController');
     Route::resource('users', 'Dashboard\UserController');
 });
-Route::get('email', 'Dashboard\MailController@index')->name('email');
+Route::get('email', 'MailController@index')->name('email');
 
+Route::group(['prefix' => 'admins' , 'middleware' => ['auth','role:super-admin']], function () {
+    Route::resource('/', 'Dashboard\PermissionController');
+});
 // Route::any('trash', function () {
 //     return Inertia::render('Dashboard/Setting/Edit');
 // });

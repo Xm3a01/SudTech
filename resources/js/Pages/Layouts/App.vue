@@ -2,14 +2,14 @@
     <div class="bg-gray-200 font-roboto font-medium">
         <Header />
 
-        <div>
+        <!-- <div>
             <a class="block sm:hidden bg-dark  text-center text-primary text-5xl">
                 <inertia-link href="/">SUD<span class="text-red-500">TE</span>CH</inertia-link>
-                <!-- <inertia-link class="btn btn-primary" :href="$route('lead.view', {lead: lead})">
+                <inertia-link class="btn btn-primary" :href="$route('lead.view', {lead: lead})">
                     Edit
-                </inertia-link> -->
+                </inertia-link>
             </a>
-        </div>
+        </div> -->
 
         <slot />
 

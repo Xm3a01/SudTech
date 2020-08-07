@@ -34,23 +34,28 @@
                 </li>
                 <li class="px-2 py-2 text-sm w-full mt-2" :class="title == 'Dashboard . Jobs' || title == 'Create job' || title == 'Edit job' ? 'bg-gray-900 border-l-2 border-blue-300' : 'hover:bg-gray-900'">
                     <inertia-link href="/dashboard/jobs"  @click="loading= true" class="flex items-center">
-                        <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
+                        <!-- <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
                              stroke-linejoin="round"
                              stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
+                        </svg> -->
+                        <svg class="w-6 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" 
+                          d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" 
+                          clip-rule="evenodd"></path></svg>
                         <span class="mx-2 text-gray-300">Jobs</span>
                     </inertia-link>
                 </li>
                 <li class="px-2 py-2 text-sm  hover:bg-gray-900 mt-2" :class="title == 'Dashboard . Trash' ? 'bg-gray-900 border-l-2 border-blue-300': ''">
                     <inertia-link href="/dashboard/trash" class="flex items-center" @click="loading= true">
-                        <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
+                        <!-- <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
                              stroke-linejoin="round"
                              stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path
                                 d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-                        </svg>
+                        </svg> -->
+                        <svg class="w-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                         <span class="mx-2 text-gray-300">Trash</span>
                     </inertia-link>
                 </li>
@@ -58,7 +63,7 @@
             <div class="border-t border-gray-700 -mx-2 mt-2 md:hidden"></div>
             <ul class="mt-6 md:hidden">
                 <li class="px-2 py-2 text-sm  hover:bg-gray-900 rounded mt-2">
-                    <a href="#" class="mx-2 text-gray-300">Account Settings</a>
+                    <inertia-link :href="'/dashboard/users/'+user.id+'/edit'" class="mx-2 text-gray-300">Account Settings</inertia-link>
                 </li>
                 <li class="px-2 py-2 text-sm  hover:bg-gray-900 rounded mt-2">
                     <button class="mx-2 text-gray-300" @click="logout">Logout</button>
@@ -71,16 +76,16 @@
       <div class="w-full md:flex-1">
            <nav class="hidden md:flex justify-between items-center bg-gray-900 p-4 shadow-md h-16">
                <div><span class="lds-dual-ring mr-1 mt-1" v-if="loading"></span></div>
-               <div class="image-text py-auto border-2 border-red-500 hover:bg-red-500" @click ="settingPanel">
-                   <small>30x30</small>
+               <div class=" overflow-hidden image-text py-auto border-2 focus:border-blue-500 cursor-pointer" @click ="settingPanel">
+                   <img class="h-20 w-20" src="/images/brand.jpg" alt="">
                </div>
             </nav>
                <div class="absolute right-0 mt-1 z-40 " v-if="account">
                  <div class="bg-gray-700 p-5 mr-5 rounded transition duration-500 ease-in-out">
                    <div class="text-center">
                     <div class="flex px-3 my-3 justify-center">
-                      <div class="image-text py-auto border-2 hover:bg-blue-200" @click ="settingPanel">
-                        <small>30x30</small>
+                      <div class=" overflow-hidden image-text py-auto border-2 border-blue-200" @click ="settingPanel">
+                        <img class="h-20 w-20" src="/images/brand.jpg" alt="">
                      </div>
                      </div>
                     <a href="" class ="hover:text-gray-500">
@@ -96,7 +101,7 @@
                    <inertia-link :href="'/dashboard/users/'+user.id+'/edit'" class ="hover:text-gray-500">
                     <div class="flex px-3 my-2">
                      <svg fill="currentColor" class="text-gray-400 h-5 mr-2" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
-                     <h2 class="text-sm text-gray-400">Setting</h2>
+                     <h2 class="text-sm text-gray-400">Account Setting</h2>
                     </div>
                     </inertia-link>
                     <a href="/logout">
@@ -159,7 +164,7 @@
     height: 30px;
     width: 30px;
     background: #ccc;
-    border: none;
+    /* border: none; */
     border-radius: 50%;
     color: rgb(78, 72, 72);
     font-size: 9px;
