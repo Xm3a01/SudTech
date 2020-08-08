@@ -112,14 +112,9 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap ml-16  py-4 w-auto">
-                            <span
-                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Laravel</span>
-                            <span
-                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">Vue</span>
-                            <span
-                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">React</span>
-                            <span
-                                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none">PHP</span>
+                            <span v-for="tag in job.tags" :key="tag.id" class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">
+                                {{tag.name}}
+                            </span>
                         </div>
                     </div>
                     <div class="flex justify-end">

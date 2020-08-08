@@ -59,7 +59,7 @@
 
                     <div class="mb-4">
                         <label for="apply url" class="uppercase" :class="{ 'text-gray-300': focusedEmail }">apply url</label>
-                        <input type="text" v-model="fields.apply_url" 
+                        <input type="text" v-model="fields.apply_url"
                         class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
                         :class="[focusedEmail ? 'bg-gray-100' : 'bg-gray-200']"
                         @focus="focusUrl" @blur="blurUrl">
@@ -69,8 +69,8 @@
 
                     <div class="mb-4">
                         <label for="apply email" class="uppercase" :class="{ 'text-gray-300': focusedUrl }">apply email</label>
-                        <input type="text" v-model="fields.apply_email" 
-                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100" 
+                        <input type="text" v-model="fields.apply_email"
+                        class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
                         :class="[focusedUrl ? 'bg-gray-100' : 'bg-gray-200']"
                         @focus="focusEmail" @blur="blurEmail">
                         <span class="text-sm" :class="[focusedUrl ? 'text-gray-300' : 'text-second-gray']">
@@ -94,7 +94,7 @@
                         <div class=" flex flex-col">
                             <div v-for="(color , index) in colors" :key="index">
                               <input type="radio" :id="'color'+index" :value="color.name" v-model="fields.job_color" :class="'ml-2 form-radio '+color.text">
-                                <label :for="'color'+index" :class ="'font-bold text-sm '+color.name"> 
+                                <label :for="'color'+index" :class ="'font-bold text-sm '+color.name">
                                     {{color.label}}
                                 </label>
                             </div>
