@@ -1,42 +1,40 @@
 <template>
 
-    <app>
+    <app title="SUDTECH">
         <div class="container mx-auto px-4 mb-12">
             <div class="sm:w-3/4 mx-auto">
                 <div>
 
                     <div class="mb-4 mt-10">
                         <p class="font-medium">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis veniam eos quam
-                            laborum! At saepe nobis ratione fugiat rerum, quasi voluptas quidem suscipit, consequatur,
-                            inventore quibusdam impedit laborum ullam commodi.
+                            {{job.job_description | striphtml}}
                         </p>
                     </div>
 
-                    <div class="mb-4">
-                        <h1 class="uppercase text-4xl">job responsibilities</h1>
+                    <div v-show="job.job_responspilty" class="mb-4">
+                        <h1 class="uppercase text-3xl">job responsibilities</h1>
                         <p class="font-medium">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore aliquam, fugiat consequatur
-                            mollitia architecto, sequi culpa nemo assumenda enim quae accusantium et natus. Quas
-                            recusandae eius incidunt inventore nobis non!
+                            {{job.job_responspilty | striphtml}}
                         </p>
                     </div>
 
-                    <div class="mb-4">
-                        <h1 class="uppercase text-4xl">job requirements</h1>
+                    <div v-show="job.job_requirements != null" class="mb-4">
+                        <h1 class="uppercase text-3xl">job requirements</h1>
                         <p class="font-medium">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore aliquam, fugiat consequatur
-                            mollitia architecto, sequi culpa nemo assumenda enim quae accusantium et natus. Quas
-                            recusandae eius incidunt inventore nobis non!
+                            {{job.job_requirements | striphtml}}
                         </p>
                     </div>
 
                 </div>
                 <div class="flex justify-center mt-10">
-                    <button
+                    <a v-show="job.apply_url != null" :href="job.apply_url" target="_blank"
                         class="px-4 py-2 rounded-sm hover:bg-white hover:text-secondary font-bold border-2 border-secondary bg-secondary text-white focus:outline-none">
                         Apply
-                    </button>
+                    </a>
+                    <a v-show="job.apply_email != 'null'"  :href="'mailto:'+job.apply_email" target="_blank"
+                        class="px-4 py-2 rounded-sm hover:bg-white hover:text-secondary font-bold border-2 border-secondary bg-secondary text-white focus:outline-none">
+                        Apply
+                    </a>
                 </div>
             </div>
         </div>
@@ -51,6 +49,7 @@
         components: {
             App,
         },
+        props: ['job'],
     }
 
 </script>

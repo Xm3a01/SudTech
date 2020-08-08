@@ -2,34 +2,41 @@
 
     <app title="SUDTECH">
 
-            <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
-                <div class="box-wrapper">
+        <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
+            <div class="box-wrapper">
 
-                    <div class=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
-                      <button @click="getImages()" class="outline-none focus:outline-none"><svg class=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                      <input type="search" name="" id="" @keydown.enter="getImages()" placeholder="search for job" x-model="q" class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent">
-                      <div class="select">
-                        <select name="" id="" x-model="image_type" class="text-sm outline-none focus:outline-none bg-transparent">
-                          <option value="all" selected>All</option>
-                          <option value="New">New</option>
-                          <option value="Older">Older</option>
-                         </select>
-                      </div>
+                <div class=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
+                    <button @click="getImages()" class="outline-none focus:outline-none"><svg
+                            class=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg></button>
+                    <input type="search" name="" id="" @keydown.enter="getImages()" placeholder="search for job"
+                        v-model="search" x-model="q"
+                        class="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent">
+                    <div class="select">
+                        <select name="" id="" x-model="image_type" v-model="type"
+                            class="text-sm outline-none focus:outline-none bg-transparent">
+                            <option value="all" selected>All</option>
+                            <option value="new">New</option>
+                            <option value="older">Older</option>
+                        </select>
                     </div>
-
                 </div>
-            </div>
 
-            <div class="px-auto mx-auto  py-12 w-9/12 md:w-3/5 ">
+            </div>
+        </div>
+        <div class="px-auto mx-auto  py-12 w-9/12 md:w-3/5 ">
+            <div v-if="type != 'older'" class="mb-12">
                 <div class="text-xl mb-2 text-gray-600 font-bold">
                     NEW
                 </div>
-                <a v-for="job in newers" :key="job.id" :class="job.job_color"
+                <a v-for="job in filterNews" :key="job.id" :class="job.job_color"
                     class="border-b border-gray-300 py-2 px-2 w-full flex flex-wrap justify-between hover:bg-gray-200">
+
                     <div class="flex flex-no-wrap w-full md:w-3/4 flex-col md:flex-row">
                         <div class="md:w-1/2 flex">
-                            <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start"
-                                src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+                            <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start" :src="job.image">
                             <div class="block">
                                 <div class="font-semibold text-dark w-3/10 text-sm">{{job.job_title}}</div>
                                 <div class="text-dark font-light">{{job.company_name}}</div>
@@ -46,14 +53,9 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap ml-16  py-4 w-auto">
-                            <span
-                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">Laravel</span>
-                            <span
-                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">Vue</span>
-                            <span
-                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">React</span>
-                            <span
-                                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">PHP</span>
+                            <span v-for="tag in job.tags" :key="tag.id" class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none">
+                                {{tag.name}}
+                            </span>
                         </div>
                     </div>
                     <div class="flex justify-end">
@@ -69,18 +71,19 @@
                                         d="M11.8284 7.58568C12.2189 7.19516 12.2189 6.56199 11.8284 6.17147C11.4379 5.78094 10.8047 5.78094 10.4142 6.17147L6.17154 10.4141C5.78101 10.8046 5.78101 11.4378 6.17154 11.8283C6.56206 12.2188 7.19522 12.2188 7.58575 11.8283L11.8284 7.58568Z" />
                                 </svg>
                             </button>
-                            <span class="mr-4">1w</span>
+                            <span class="mr-4">{{job.created_at}}</span>
                         </div>
                         <div class="flex items-center">
-                              <inertia-link href="/job/show"
-                                 class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
+                            <inertia-link :href="$route('job.show', job.id)"
+                                class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
                                 Apply
-                             </inertia-link>
+                            </inertia-link>
                         </div>
                     </div>
                 </a>
-
-                <div class="flex  mb-2 justify-between mt-12">
+            </div>
+            <div v-if="type != 'new'" class="mb-12">
+                <div class="flex  mb-2 justify-between">
                     <div class="text-xl text-gray-600 font-bold">
                         OLDER
                     </div>
@@ -88,13 +91,11 @@
                         Note, these jobs may no longer be available
                     </div>
                 </div>
-
-                <a v-for="job in olders" :key="job.id" :class="job.color"
+                <a v-for="(job,k) in filterOlds" :key="k" :class="job.job_color"
                     class="border-b border-gray-300 bg-yellow-200 py-2 px-3 w-full flex flex-wrap justify-between hover:bg-gray-200">
                     <div class="flex flex-no-wrap w-full md:w-3/4 flex-col md:flex-row">
                         <div class="md:w-1/2 flex">
-                            <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start"
-                                src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+                            <img class="h-4/3 w-4/3 object-cover rounded mr-4 self-start" :src="job.image">
                             <div class="block">
                                 <div class="font-semibold text-dark w-3/10 text-sm"> {{job.job_title}}</div>
                                 <div class="text-dark font-light">{{job.company_name}}</div>
@@ -134,30 +135,60 @@
                                         d="M11.8284 7.58568C12.2189 7.19516 12.2189 6.56199 11.8284 6.17147C11.4379 5.78094 10.8047 5.78094 10.4142 6.17147L6.17154 10.4141C5.78101 10.8046 5.78101 11.4378 6.17154 11.8283C6.56206 12.2188 7.19522 12.2188 7.58575 11.8283L11.8284 7.58568Z" />
                                 </svg>
                             </button>
-                            <span class="mr-4">1w</span>
+                            <span class="mr-4">{{job.created_at}}</span>
                         </div>
                         <div class="flex items-center">
-                            <inertia-link href="/job/show"
-                                 class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
+                            <inertia-link :href="$route('job.show', job.id)"
+                                class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm">
                                 Apply
-                             </inertia-link>
+                            </inertia-link>
                         </div>
                     </div>
                 </a>
             </div>
+        </div>
         <!-- End Cards -->
 
     </app>
-
+    <!--  -->
+    <!-- this.$inertia.post(route('reminder.save'), postData) -->
 </template>
 
 <script>
-    import App from './../Layouts/App'
-    export default {
-        components: {
-            App,
+import App from './../Layouts/App'
+export default {
+    components: {
+        App,
+    },
+    props: ['olders', 'newers', 'jobs'],
+    data() {
+        return {
+            search: '',
+            type:'all',
+        }
+    },
+    computed: {
+        filterNews() {
+            if (this.search && this.type == 'new' || this.type == 'all') {
+                return this.newers.filter(item => {
+                    console.log('new')
+                    return item.job_title.toLowerCase().match(this.search.toLowerCase())
+                })
+            } else {
+                return this.newers
+            }
         },
-        props:['olders' , 'newers'],
-    }
+        filterOlds() {
+            if (this.search && this.type == 'older' || this.type == 'all') {
+                return this.olders.filter(item => {
+                    console.log('old')
+                    return item.job_title.toLowerCase().match(this.search.toLowerCase())
+                })
+            } else {
+                return this.olders
+            }
+        },
+    },
+}
 
 </script>
