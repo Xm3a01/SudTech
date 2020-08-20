@@ -27,7 +27,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/job/show', 'JobController@show')->name('job.show');
+Route::get('/job/show/{job}', 'JobController@show')->name('job.show');
 Route::get('/job/create', 'JobController@create')->name('job.create');
 
 Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {

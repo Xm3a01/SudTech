@@ -33,8 +33,12 @@ class JobController extends Controller
         $this->jobValidation($request);
         
         $job = $this->storeJob($request);
-        $job->tags()->sync($t_id);
 
+
+        if ($request->has('logo')) {
+            $job->addMedia($request->logo)->preservingOriginal()->toMediaCollection('jobs');
+        }
+        $job->tags()->sync($t_id);
 
         if($request->segment(2) == 'jobs'){
             return redirect()->route('jobs.index')->with('successMessage' , 'Your Job Successfully added');
@@ -90,9 +94,13 @@ class JobController extends Controller
               $job->job_color = $request->job_color;
           }
             $job->save();
+            if ($request->has('logo')) {
+                $job->clearMediaCollection('jobs');
+                $job->addMedia($request->logo)->preservingOriginal()->toMediaCollection('jobs');
+            }
         // if($request->segment(1) == 'jobs'){
            return redirect()->route('jobs.index')->with('successMessage' , 'Your Job Successfully updated');
-        
+
     }
 
     public function destroy($id)
