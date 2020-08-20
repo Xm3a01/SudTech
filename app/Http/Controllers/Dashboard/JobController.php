@@ -29,13 +29,16 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
+        $t_id = array_map('intval' , explode( ',' , $request->inputTags));    
         $this->jobValidation($request);
+        
         $job = $this->storeJob($request);
-        $job->tags()->sync($request->tags);
+
 
         if ($request->has('logo')) {
             $job->addMedia($request->logo)->preservingOriginal()->toMediaCollection('jobs');
         }
+        $job->tags()->sync($t_id);
 
         if($request->segment(2) == 'jobs'){
             return redirect()->route('jobs.index')->with('successMessage' , 'Your Job Successfully added');
@@ -139,5 +142,15 @@ class JobController extends Controller
         $user = Auth::user();
         $jobs = $user->jobs()->paginate(10);
         return response()->json($jobs);
+    }
+
+    public function getID($tags)
+    {
+        $tags = [];
+
+        foreach ($tags as $key => $value) {
+            $tags[$key] = Tags::where('name', $value)->first()->id;
+        }
+        return $tags;
     }
 }
