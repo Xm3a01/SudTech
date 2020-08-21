@@ -95,7 +95,13 @@
 
         methods:{
             updateUser(id) {
-                this.$inertia.post('/dashboard/editUser/'+id,this.form)
+                const formData = new FormData();
+                formData.append('avatar', this.avatar);
+
+                _.each(this.form, (value, key) => {
+                    formData.append(key, value)
+                })
+                this.$inertia.post('/dashboard/editUser/'+id,formData)
                   .then((res)=>{
                       this.changePassord = false
                   })

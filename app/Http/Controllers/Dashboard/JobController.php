@@ -17,6 +17,7 @@ class JobController extends Controller
     {
         $user = Auth::user()->load('jobs');
         $jobs = $user->jobs()->paginate(10);
+        $jobs->load('tags');
         return Inertia::render('Dashboard/Job/Index',['user' => $user , 'jobs' => $jobs]);
     }
 

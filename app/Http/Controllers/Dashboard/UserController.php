@@ -49,6 +49,7 @@ class UserController extends Controller
 
     public function editUser(Request $request , $id)
     {
+        // return $request->avatar->getClientOriginalName();
         $user = User::findOrFail($id);
           if($request->name){
             $user->name = $request->name;
