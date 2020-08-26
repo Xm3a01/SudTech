@@ -16,6 +16,7 @@ class JobController extends Controller
     public function index()
     {
         $user = Auth::user()->load('jobs');
+        $user['image'] = $user->image;
         $jobs = $user->jobs()->paginate(10);
         $jobs->load('tags');
         return Inertia::render('Dashboard/Job/Index',['user' => $user , 'jobs' => $jobs]);
@@ -67,31 +68,31 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
 
            $job->status = $request->status;
-          if ($request->job_title) {
+          if ($request->has('job_title')) {
               $job->job_title = $request->job_title;
           }
-          if ($request->job_location) {
+          if ($request->has('job_location')) {
               $job->job_location = $request->job_location;
           }
-          if ($request->job_description) {
+          if ($request->has('job_description')) {
               $job->job_description = $request->job_description;
           }
-          if ($request->company_name) {
+          if ($request->has('company_name')) {
               $job->company_name = $request->company_name;
           }
-          if ($request->apply_url) {
+          if ($request->has('apply_url')) {
               $job->apply_url = $request->apply_url;
           }
-          if ($request->apply_email) {
+          if ($request->has('apply_email')) {
               $job->apply_email = $request->apply_email;
           }
-          if ($request->job_responsibilities) {
+          if ($request->has('job_responsibilities')) {
               $job->job_responspilty = $request->job_responsibilities;
           }
-          if ($request->job_requirements) {
+          if ($request->has('job_requirements')) {
               $job->job_requirements = $request->job_requirements;
           }
-          if ($request->job_color) {
+          if ($request->has('job_color')) {
               $job->job_color = $request->job_color;
           }
             $job->save();

@@ -1,5 +1,5 @@
 <template>
-    <Layout title="SUDTECH" :user="user">
+    <Layout title="SUDTECH" :user="user" :role ="role">
 
        <div class="mx-auto w-full">
         <div>
@@ -127,6 +127,6 @@ export default {
        Layout
    },
 
-   props:['user' , 'newers','olders','deleted']
+   props:['user' , 'newers','olders','deleted' , 'role']
 }
 </script>

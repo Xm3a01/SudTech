@@ -11,7 +11,7 @@
                     <div class="flex flex-col">
                         <div class="flex justify-center">
                           <div class ="h-40 w-40 overflow-hidden px-auto bg-gray-600  rounded-full border-4 border-gray-600">
-                              <img class="h-32 w-40" :src="imageData ? imageData : '/images/user.png'" alt="">
+                              <img class="h-32 w-40" :src="imageData ? imageData : user.image ? user.image:'/images/user.png'" alt="">
                               <label for="avatar" class="text-xs h-2 w-2 px-20 text-center rounded-full pr-2 bg-gray-400 text-gray-500 cursor-pointer">Edit</label>
                               <input type="file" name="avatar" id="avatar" @input="onSelectFile" hidden>
                           </div>

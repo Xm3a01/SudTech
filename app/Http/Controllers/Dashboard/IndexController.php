@@ -14,12 +14,23 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $role = '';
         $user = Auth::user();
+        $user['image'] = $user->image;
         $newers =  $user->jobs()->where('created_at' ,'>', Carbon::now()->subWeeks(4)->subDays(2))->count();
         $olders =  $user->jobs()->where('created_at' ,'<', Carbon::now()->subWeeks(4)->subDays(2))->count();
         $user->jobs()->where('created_at' ,'<', Carbon::now()->subWeeks(8)->subDays(4))->delete();
         $deleted = $user->jobs()->onlyTrashed()->count();
 
-        return Inertia::render('Dashboard/Index',['user'=>$user,'olders' => $olders , 'newers' => $newers,'deleted' => $deleted]);
+        if($user->hasRole('super-admin')) {
+            $role = 'super-admin';
+        }
+        return Inertia::render('Dashboard/Index',[
+            'user'=>$user,
+            'olders' => $olders , 
+            'newers' => $newers,
+            'deleted' => $deleted , 
+            'role' => $role
+            ]);
     }
 }

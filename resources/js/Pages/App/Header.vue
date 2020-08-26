@@ -1,6 +1,6 @@
 <template>
 <div>
-    <header class="bg-dark bg-auto bg-cover" style="background-image: url(/images/brand.jpg)">
+    <header class="bg-dark bg-auto bg-cover" style="">
         <nav>
            <div class="px-20 py-6 flex justify-between items-center">
                 <div>
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </nav>
-        <div v-if="title  != 'Post job'" class="block sm:block text-center border-b-4 border-primary pb-24 pt-48  bg-dark bg-cover"  style="background-image: url(/images/brand.jpg)">
+        <div v-if="title  != 'Post job'" class="block sm:block text-center border-b-4 border-primary pb-24 pt-48  bg-dark bg-cover"  style="">
             <div class="px-20 text-white text-3xl flex justify-start">
                <span class="border-b border-white">SUD<span class="text-red-500">TE</span>CH job board</span>
             </div>
