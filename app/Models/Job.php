@@ -41,7 +41,7 @@ class Job extends Model implements HasMedia
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class , 'jobs_tags' , 'jobs_id' , 'tags_id');
     }
 
     public function user()

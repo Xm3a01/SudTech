@@ -54,11 +54,8 @@
                                         <div class="mx-2">
                                           <div class="text-sm leading-5 font-medium text-gray-600"> {{job.job_title}}</div>
                                             <div class="text-sm  mt-1 leading-5 text-gray-500">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-800 text-gray-200">laravel</span>
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-800 text-gray-200">laravel</span>
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-800 text-gray-200">laravel</span>
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-800 text-gray-200">laravel</span>
-                                            </div>
+                                                <span  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-800 text-gray-200" v-for="tag in job.tags" :key="tag.id">{{tag.name}}</span>
+                                                </div>
                                         </div>
                                     </div>
                                 </td>

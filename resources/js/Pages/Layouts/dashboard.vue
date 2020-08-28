@@ -32,6 +32,7 @@
                         <span class="mx-2 text-gray-300"> Home</span>
                     </inertia-link>
                 </li>
+                <div v-if="!role">
                 <li class="px-2 py-2 text-sm w-full mt-2" :class="title == 'Dashboard . Jobs' || title == 'Create job' || title == 'Edit job' ? 'bg-gray-900 border-l-2 border-blue-300' : 'hover:bg-gray-900'">
                     <inertia-link href="/dashboard/jobs"  @click="loading= true" class="flex items-center">
                         <!-- <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
@@ -59,6 +60,43 @@
                         <span class="mx-2 text-gray-300">Trash</span>
                     </inertia-link>
                 </li>
+                </div>
+                <li v-if="role == 'super-admin'" class="px-2 py-2 text-sm  hover:bg-gray-900 mt-2" :class="title == 'Dashboard . Trash' ? 'bg-gray-900 border-l-2 border-blue-300': ''">
+                    <inertia-link href="/dashboard/trash" class="flex items-center" @click="loading= true">
+                        <!-- <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round"
+                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path
+                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                        </svg> -->
+                        <svg class="w-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span class="mx-2 text-gray-300">Trash</span>
+                    </inertia-link>
+                </li>
+                <li v-if="role == 'super-admin'" class="px-2 py-2 text-sm  hover:bg-gray-900 mt-2" :class="title == 'Dashboard . Trash' ? 'bg-gray-900 border-l-2 border-blue-300': ''">
+                    <inertia-link href="/dashboard/trash" class="flex items-center" @click="loading= true">
+                        <!-- <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round"
+                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path
+                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                        </svg> -->
+                        <svg class="w-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span class="mx-2 text-gray-300">Trash</span>
+                    </inertia-link>
+                </li>
+                <li v-if="role == 'super-admin'" class="px-2 py-2 text-sm  hover:bg-gray-900 mt-2" :class="title == 'Dashboard . Trash' ? 'bg-gray-900 border-l-2 border-blue-300': ''">
+                    <inertia-link href="/dashboard/trash" class="flex items-center" @click="loading= true">
+                        <!-- <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
+                             stroke-linejoin="round"
+                             stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path
+                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                        </svg> -->
+                        <svg class="w-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        <span class="mx-2 text-gray-300">{{role}}</span>
+                    </inertia-link>
+                </li>
             </ul>
             <div class="border-t border-gray-700 -mx-2 mt-2 md:hidden"></div>
             <ul class="mt-6 md:hidden">
@@ -76,16 +114,16 @@
       <div class="w-full md:flex-1">
            <nav class="hidden md:flex justify-between items-center bg-gray-900 p-4 shadow-md h-16">
                <div><span class="lds-dual-ring mr-1 mt-1" v-if="loading"></span></div>
-               <div class=" overflow-hidden image-text py-auto border-2 focus:border-blue-500 cursor-pointer" @click ="settingPanel">
-                   <img class="h-20 w-20" src="/images/brand.jpg" alt="">
+               <div class=" overflow-hidden image-text py-auto cursor-pointer" @click ="settingPanel">
+                   <img class="h-10 w-10 rounded-full" :src="user.image" alt="">
                </div>
             </nav>
                <div class="absolute right-0 mt-1 z-40 " v-if="account">
                  <div class="bg-gray-700 p-5 mr-5 rounded transition duration-500 ease-in-out">
                    <div class="text-center">
                     <div class="flex px-3 my-3 justify-center">
-                      <div class=" overflow-hidden image-text py-auto border-2 border-blue-200" @click ="settingPanel">
-                        <img class="h-20 w-20" src="/images/brand.jpg" alt="">
+                      <div class=" overflow-hidden image-text py-auto " @click ="settingPanel">
+                        <img class="h-20 w-20 rounded-full p-2" :src="user.image" alt="">
                      </div>
                      </div>
                     <a href="" class ="hover:text-gray-500">
@@ -125,12 +163,13 @@
 
 <script>
   export default {
-    props:['title','user'],
+    props:['title','user','role'],
     data() {
         return{
             isOpen:false,
             account:false,
-            loading:false
+            loading:false,
+            role:''
         }
     },
 
@@ -161,14 +200,17 @@
 
 <style>
 .image-text {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     background: #ccc;
     /* border: none; */
     border-radius: 50%;
     color: rgb(78, 72, 72);
     font-size: 9px;
     text-align: center;
+}
+.image-text img {
+  padding:1px;
 }
 .lds-dual-ring {
   display: inline-block;

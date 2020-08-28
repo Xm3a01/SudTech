@@ -1,7 +1,7 @@
 <template>
     <div class="bg-gray-100 p-6 rounded pt-20 shadow " :class="title == 'Create job' ? 'overflow-y-auto' : ''" :style="title == 'Create job' ? 'height:550px' :''">
-        <div v-if="Object.keys(errors).length > 0 " class="text-red-400 border flex justify-center rounded p-4 border-red-400 bg-red-200 font-bold mb-1">
-             {{ errors[Object.keys(errors)[0]][0] }}
+        <div v-if="Object.keys(errors).length > 0 ">
+            {{message(errors[Object.keys(errors)[0]][0])}}
            </div>
            <div v-if="successMessage" class="bg-green-400 text-center font-bold mb-2 z-48 text-gray-900 py-2 rounded">
         <div class="flex justify-between"><span class="px-4">{{successMessage}} </span> <span class="px-4 font-normal hover:mouse-pointer" @click="dismis"><inertia-link href ="/" class="text-xs border border-blue-300 text-blue-300 rounded-full">Back</inertia-link></span></div>
@@ -28,9 +28,17 @@
 
                     <div class="mb-4">
                         <label for="tags" class="uppercase">tags</label>
-                        <multiselect v-model="tag" tag-placeholder="Add this as new tag" class="px-3 py-1 rounded-lg bg-gray-200 w-full"
+                        <!-- <multiselect v-model="tag" tag-placeholder="Add this as new tag" class="px-3 py-1 rounded-lg bg-gray-200 w-full"
                         placeholder="Search or add a tag" label="name" track-by="code" :options="options" :multiple="true"
-                         @tag="addTag" :max="4"></multiselect>
+                         @tag="addTag" :max="4"></multiselect> -->
+                         <vue-tags-input
+                            v-model="inputTag"
+                            :tags="inputTags"
+                            :autocomplete-items="autocompleteItems"
+                            :add-only-from-autocomplete="true"
+                            @tags-changed="update"
+                            />
+                            <!-- <input type="hidden" name="requestTags[]" :value="inputTag"> -->
                         <span class="text-second-gray text-sm">Max of Four Tags</span>
                     </div>
 
@@ -103,7 +111,7 @@
                 <div class="flex justify-center mt-10">
                     <button type="submit"
                         class="px-4 py-2 rounded-sm hover:bg-white hover:text-secondary font-bold border-2 border-secondary bg-secondary text-white focus:outline-none">
-                        Post Job
+                        Post
                     </button>
                 </div>
               </div>
@@ -115,9 +123,12 @@
 
 <script>
     import Multiselect from 'vue-multiselect'
+    import VueTagsInput from '@johmun/vue-tags-input';
+
     export default {
         components: {
             Multiselect,
+            VueTagsInput,
 
         },
         props: ['user','tags' , 'title' , 'errors','successMessage'],
@@ -126,7 +137,9 @@
 
                 fields:{},
                 path: '',
-                tag:[],
+                inputTag: '',
+                inputTags: [],
+                autocompleteItems: [],
                 colors:[
                     {name : 'bg-red-300' , text: 'text-red-300', label: 'Red'},
                     {name : 'bg-yellow-500', text: 'text-yellow-500', label: 'Yellow'},
@@ -153,6 +166,14 @@
                 }
             };
         },
+        mounted(){
+
+        },
+
+        watch: {
+          'inputTag': 'initItems',
+        },
+
         methods:{
           focusEmail(){
             this.focusedEmail = true
@@ -176,14 +197,25 @@
             this.focusedEmail = false
           },
 
-          addTag (newTag) {
-            const tag = {
-                name: newTag,
-                code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-            }
-            this.options.push(tag)
-            this.value.push(tag)
-        },
+          update(newTags) {
+            this.autocompleteItems = [];
+            this.inputTags = newTags;
+            console.log(this.inputTags)
+          },
+         initItems() {
+             this.autocompleteItems = this.tags.map(a =>{
+                 return {text: a.name , id: a.id};
+             });
+         },
+
+        //   addTag (newTag) {
+        //     const tag = {
+        //         name: newTag,
+        //         code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+        //     }
+        //     this.options.push(tag)
+        //     this.value.push(tag)
+        // },
 
         onInputChange(e) {
 
@@ -194,8 +226,10 @@
         Onsubmit(){
             const formData = new FormData();
             formData.append('logo', this.path);
-            formData.append('tags', this.tags);
-
+            let final = this.inputTags.map((t)=>{
+                return t.id;
+            })
+            formData.append('inputTags', final);
              _.each(this.fields, (value, key) => {
                  formData.append(key, value)
              })
@@ -207,9 +241,33 @@
         },
         dismis(){
             this.successMessage = ''
-        }
+        },
+        message(string){
+            swal({
+                title: "Error",
+                text: string,
+                icon: "error",
+                // buttons:true
+            });
+            this.errors =''
+         }
 
         },
     }
 
 </script>
+
+<style lang = "css">
+.vue-tags-input{
+    max-width: 705px;
+}
+.vue-tags-input .ti-input {
+  border-radius: 5px;
+  width: auto;
+  background: #edf2f7;
+}
+
+.vue-tags-input .ti-input .ti-new-tag-input {
+    background: #edf2f7;
+}
+</style>

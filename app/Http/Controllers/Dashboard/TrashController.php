@@ -14,6 +14,7 @@ class TrashController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $user['image'] = $user->image;
         $jobs = $user->jobs()->onlyTrashed()->paginate(10);
         return Inertia::render('Dashboard/Job/Trash',['user' => $user , 'jobs' => $jobs]);
     }

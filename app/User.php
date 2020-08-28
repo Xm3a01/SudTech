@@ -3,14 +3,16 @@
 namespace App;
 
 use App\Models\Job;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
+ 
+class User extends Authenticatable implements HasMedia
 {
-    use Notifiable,HasRoles;
+    use Notifiable,HasRoles , InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -42,5 +44,11 @@ class User extends Authenticatable
     public function jobs()
     {
         return $this->hasMany(Job::class);
+    }
+
+    public function getImageAttribute(){
+
+        return $this->getFirstMediaUrl('users');
+
     }
 }

@@ -2,9 +2,10 @@
 
     <dashboard title = "Edit job" :user="user">
          <div class="bg-gray-100 p-6 rounded pt-20 shadow overflow-y-auto" style="height:550px">
-        <div v-if="Object.keys(errors).length > 0 " class="text-red-400 border flex justify-center rounded p-4 border-red-400 bg-red-200 font-bold mb-1">
+        <!-- <div v-if="Object.keys(errors).length > 0 " class="text-red-400 border flex justify-center rounded p-4 border-red-400 bg-red-200 font-bold mb-1">
              {{ errors[Object.keys(errors)[0]][0] }}
-           </div>
+           </div> -->
+           {{message(errors[Object.keys(errors)[0]][0])}}
           <h2 class="text-2xl w-9/12 mx-auto font-medium mb-5 text-gray-500 uppercase">New job</h2>
          <div class="container w-9/12 mx-auto px-4 mb-12 mt-8">
          <form  @submit.prevent="OnUpdate(job.id)">
@@ -227,6 +228,16 @@
             }
         }
         },
+
+        message(string){
+        swal({ 
+            title: "Error",
+            text: string,
+            icon: "Error",
+            // buttons:true
+        });
+      this.errors =null;
+    }
 
     }
 
