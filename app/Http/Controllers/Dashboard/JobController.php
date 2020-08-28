@@ -31,13 +31,13 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
-        $t_id = array_map('intval' , explode( ',' , $request->inputTags));    
+        $t_id = array_map('intval' , explode( ',' , $request->inputTags));
         $this->jobValidation($request);
-        
+
+
         $job = $this->storeJob($request);
 
-
-        if ($request->has('logo')) {
+        if ($request->has('logo') && !empty($request->logo)) {
             $job->addMedia($request->logo)->preservingOriginal()->toMediaCollection('jobs');
         }
         $job->tags()->sync($t_id);
@@ -67,7 +67,8 @@ class JobController extends Controller
 
         $job = Job::findOrFail($id);
 
-           $job->status = $request->status;
+        $job->status = $request->status;
+
           if ($request->has('job_title')) {
               $job->job_title = $request->job_title;
           }
@@ -87,7 +88,7 @@ class JobController extends Controller
               $job->apply_email = $request->apply_email;
           }
           if ($request->has('job_responsibilities')) {
-              $job->job_responspilty = $request->job_responsibilities;
+              $job->job_responsibilities = $request->job_responsibilities;
           }
           if ($request->has('job_requirements')) {
               $job->job_requirements = $request->job_requirements;
@@ -96,7 +97,7 @@ class JobController extends Controller
               $job->job_color = $request->job_color;
           }
             $job->save();
-            if ($request->has('logo')) {
+            if ($request->has('logo') && !empty($request->logo)) {
                 $job->clearMediaCollection('jobs');
                 $job->addMedia($request->logo)->preservingOriginal()->toMediaCollection('jobs');
             }
