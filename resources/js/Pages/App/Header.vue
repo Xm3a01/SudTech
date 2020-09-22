@@ -9,7 +9,7 @@
                     </a>
                 </div>
                 <div :class="postJobBtn == false ? 'w-33  px-12 py-2' : ''">
-                    <inertia-link href="/job/create" v-if="postJobBtn"
+                    <inertia-link href="/dashboard/jobs/create" v-if="postJobBtn"
                         class="px-6 py-2 border rounded border-gray-200 text-white font-bold text-sm  hover:text-primary focus:outline-none">
                         Post a Job
                          <span  class="ml-2 text-red-200  hover:text-red-400" @click.prevent="postJobBtn = false">x</span>

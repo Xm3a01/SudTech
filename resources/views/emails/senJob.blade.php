@@ -1,32 +1,14 @@
 @component('mail::message')
-# New job poated
+# {{$job->job_title}}
+<small>{{$job->job_location}}</small>
 
-BROADCAST_DRIVER=log
-CACHE_DRIVER=file
-QUEUE_CONNECTION=sync
-SESSION_DRIVER=file
-SESSION_LIFETIME=120
+{!! $job->job_description !!}
 
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
 
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS=null
-MAIL_FROM_NAME="${APP_NAME}"
-
-{{-- @component('mail::button', ['class'=>'button-success','url' => ''])
-Check
-@endcomponent --}}
 <a href="">
 <div class="job-section">
     <div >
-      <p> <img src="{{asset('images/search.png')}}" class="image"> <span style="margin-left: 10px; text-decoration: none;"> web Developer</span> </p>
+       <p> <img src="https://images.app.goo.gl/7oeVxUQPqrh8QmRT6" class="image"> <span style="margin-left: 10px; text-decoration: none;"> {{$job->job_title}} <br class="margin-left: 10px;"> {{$job->job_location}} </span> </p>
     </div>
 </div>
 </a>

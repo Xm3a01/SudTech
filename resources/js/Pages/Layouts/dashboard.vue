@@ -169,7 +169,6 @@
             isOpen:false,
             account:false,
             loading:false,
-            role:''
         }
     },
 
