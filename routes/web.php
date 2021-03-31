@@ -40,6 +40,10 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::post('jobs/update/{id}', 'Dashboard\JobController@update')->name('job.update');
     Route::resource('trash', 'Dashboard\TrashController');
     Route::resource('users', 'Dashboard\UserController');
+    Route::post('users/update/{id}', 'Dashboard\UserController@update')->name('users.update');
+    Route::resource('tags', 'Dashboard\TagController')->except('update');
+    Route::post('tags/update/{tag}', 'Dashboard\TagController@update')->name('tags.update');
+    Route::get('tag/paginate', 'Dashboard\TagController@paginate')->name('tag.paginate');
 });
 Route::get('email', 'MailController@index')->name('email');
 
@@ -47,5 +51,5 @@ Route::group(['prefix' => 'admins' , 'middleware' => ['auth','role:super-admin']
     Route::resource('/', 'Dashboard\PermissionController');
 });
 Route::any('test', function () {
-    return Inertia::render('App/New/Index');
+    return Inertia::render('App/Dashboard/Index');
 });

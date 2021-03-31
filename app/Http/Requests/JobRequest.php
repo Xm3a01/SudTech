@@ -28,6 +28,7 @@ class JobRequest extends FormRequest
             'job_location' => 'required',
             'company_name' => 'required',
             'job_description' => 'required',
+            'apply_email' => 'required'
         ];
     }
 }

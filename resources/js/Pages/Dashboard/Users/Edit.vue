@@ -42,14 +42,19 @@
 
               <div class="mb-4">
                 <label for="tags" class="uppercase">tags</label>
-                <vue-tags-input
-                v-model="inputTag"
-                :tags="inputTags"
-                :autocomplete-items="filteredItems"
-                @tags-changed="update"
-              />
-              <!-- <input type="hidden" name="requestTags[]" :value="inputTag"> -->
-              <span class="text-second-gray text-sm">Max of Four Tags</span>
+                <multiselect
+                  v-model="tag"
+                  tag-placeholder="Add this as new tag"
+                  class="px-3 py-1 rounded-lg bg-gray-200 w-full"
+                  placeholder="Search or add a tag"
+                  label="name"
+                  track-by="code"
+                  :options="options"
+                  :multiple="true"
+                  @tag="addTag"
+                  :max="4"
+                ></multiselect>
+                <span class="text-second-gray text-sm">Max of Four Tags</span>
               </div>
 
               <div class="mb-4">
@@ -205,12 +210,12 @@
 
 <script>
 import Dashboard from "./../../Layouts/dashboard";
-import VueTagsInput from "@johmun/vue-tags-input";
+import Multiselect from "vue-multiselect";
 
 export default {
   components: {
     Dashboard,
-    VueTagsInput,
+    Multiselect,
   },
   props: ["user", "tags", "errors", "job"],
 
@@ -218,9 +223,7 @@ export default {
     return {
       fields: this.job,
       path: "",
-      inputTag: '',
-      inputTags: [],
-      autocompleteItems: [],
+      tag: [],
       focusedEmail: false,
       focusedUrl: false,
       email: "",
@@ -233,7 +236,7 @@ export default {
         { name: "bg-gray-300", text: "text-gray-300", label: "SmiDark" },
         { name: "bg-green-300", text: "text-green-300", label: "Green" },
       ],
-      options: this.tags,
+      options: this.job.tags,
       editorConfig: {
         // The configuration of the editor.
         toolbar: [
@@ -255,17 +258,6 @@ export default {
         // toolbar: ['Heading', 'bold', 'italic', 'bulletedList', 'numberedList', 'insertTable', 'blockQuote', 'undo', 'redo' ]
       },
     };
-  },
- mounted() {
-    this.initItems()
-  },
-
-  computed: {
-     filteredItems() {
-      return this.autocompleteItems.filter(tag => {
-        return tag.text.toLowerCase().indexOf(this.inputTag.toLowerCase()) !== -1;
-      });
-    },
   },
   methods: {
     focusEmail() {
@@ -290,19 +282,13 @@ export default {
       this.focusedEmail = false;
     },
 
-   update(newTags) {
-      this.autocompleteItems = [];
-      this.inputTags = newTags;
-      console.log(this.inputTags);
-    },
-    initItems() {
-      this.autocompleteItems = this.tags.map((a) => {
-        return { text: a.name, id: a.id };
-      });
-
-      this.inputTags = this.job.tags.map((a) => {
-        return { text: a.name, id: a.id };
-      });
+    addTag(newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
+      };
+      this.options.push(tag);
+      this.value.push(tag);
     },
 
     onInputChange(e) {
@@ -348,17 +334,3 @@ export default {
   },
 };
 </script>
-
-<style >
-.vue-tags-input {
-  max-width: 533px !important;
-  background: #e2e8f0 !important;
-  border-radius: 5px;
-}
-.vue-tags-input .ti-input {
-  border: none;
-}
-.vue-tags-input .ti-new-tag-input {
-  background: #e2e8f0 !important;
-}
-</style>

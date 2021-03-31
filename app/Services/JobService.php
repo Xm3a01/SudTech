@@ -10,6 +10,7 @@ class JobService {
 
     public function createNewJob($request)
     {
+        
         Job::create([
             'job_title' => $request->job_title,
             'job_location' => $request->job_location,
@@ -20,7 +21,7 @@ class JobService {
             'job_responspilty' => $request->job_responsibilities,
             'job_requirements' => $request->job_requirements,
             'job_color' => $request->job_color,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->is_admin == 1 ? $request->user_id : Auth::user()->id 
         ]);
     }
 

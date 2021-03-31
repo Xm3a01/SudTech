@@ -1,7 +1,7 @@
 <template>
 
     <dashboard title = "Create job" :user = "user">
-      <Form :user='user' :users = "users" :tags = 'tags' title ="Create job" :errors = 'errors'></Form>
+      <Form :user='user' :tags = 'tags' title ="Create job" :errors = 'errors'></Form>
   </dashboard>
 
 </template>
@@ -16,7 +16,7 @@
             Dashboard,
             Form,
         },
-        props: ['user','tags' , 'errors' , 'users'],
+        props: ['user','tags' , 'errors'],
 
         data() {
             return {

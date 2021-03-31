@@ -5,7 +5,7 @@
            <div class="px-20 py-6 flex justify-between items-center">
                 <div>
                     <a class="hidden sm:block text-white text-2xl font-bold">
-                        <inertia-link href="/">SUD<span class="text-red-500" >TE</span>CH</inertia-link>
+                        <inertia-link href="/">SUD<span class="text-red-500" >A</span>JOB</inertia-link>
                     </a>
                 </div>
                 <div :class="postJobBtn == false ? 'w-33  px-12 py-2' : ''">

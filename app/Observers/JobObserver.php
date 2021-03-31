@@ -4,11 +4,14 @@ namespace App\Observers;
 
 use App\Models\Job;
 use App\Events\SendEmail;
+use App\Traits\AttachmentTrait;
 use App\Http\Requests\JobRequest;
 use Illuminate\Support\Facades\Auth;
 
 class JobObserver
 {
+    use AttachmentTrait;
+
     public $request;
 
     public function __construct(JobRequest $request) {
@@ -27,7 +30,8 @@ class JobObserver
         $tage_id = array_map('intval' , explode( ',' , $this->request->inputTags));     
         
         if ($this->request->hasFile('logo')) {
-            $job->addMedia($this->request->logo)->preservingOriginal()->toMediaCollection('jobs');
+            // $job->addMedia($this->request->logo)->preservingOriginal()->toMediaCollection('jobs');
+            $this->singleFile($this->request->logo , $job , 'jobs');
         }
         $job->tags()->sync($tage_id);
 
@@ -42,9 +46,10 @@ class JobObserver
      */
     public function updated(Job $job)
     {
-        if ($this->request->has('logo')) {
+        if ($this->request->hasFile('logo')) {
             $job->clearMediaCollection('jobs');
-            $job->addMedia($this->request->logo)->preservingOriginal()->toMediaCollection('jobs');
+            // $job->addMedia($this->request->logo)->preservingOriginal()->toMediaCollection('jobs');
+            $this->singleFile($this->request->logo , $job , 'jobs');
         }
     }
 
