@@ -37,11 +37,16 @@ class TrashController extends Controller
 
     public function edit($id)
     {
-       $job =  Job::withTrashed()->where('id' , $id)->first();
-       $job->created_at = Carbon::now();
-       $job->updated_at = Carbon::now();
-       $job->save();
-
+        // return $id;
+       $job =  Job::withTrashed()->whereId($id)->first();
+       $job->update([
+           'created_at' => Carbon::now(),
+           'updated_at' => Carbon::now()
+       ]);
+    //    $job->created_at = Carbon::now();
+    //    $job->updated_at = Carbon::now();
+    //    $job->save();
+    //    return $job->job_title;
        $job->restore();
 
         return back()->with('successMessage','job successfully Restored');

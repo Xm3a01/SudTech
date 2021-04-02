@@ -28,6 +28,8 @@ class JobService {
     public function updateJob($job , $request)
     {
 
+//         job_responspilty
+// job_requirements
            $job->status = $request->status;
           if ($request->has('job_title')) {
               $job->job_title = $request->job_title;
@@ -47,8 +49,8 @@ class JobService {
           if ($request->has('apply_email')) {
               $job->apply_email = $request->apply_email;
           }
-          if ($request->has('job_responsibilities')) {
-              $job->job_responspilty = $request->job_responsibilities;
+          if ($request->has('job_responspilty')) {
+              $job->job_responspilty = $request->job_responspilty;
           }
           if ($request->has('job_requirements')) {
               $job->job_requirements = $request->job_requirements;

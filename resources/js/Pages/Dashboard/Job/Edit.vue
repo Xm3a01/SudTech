@@ -1,8 +1,8 @@
 <template>
   <dashboard title="Edit job" :user="user">
     <div
-      class="bg-gray-100 p-6 rounded pt-20 shadow overflow-y-auto"
-      style="height: 550px"
+      class="bg-gray-100 p-6 rounded pt-20 shadow overflow-y-auto md:min-h-screen "
+      style="min-height: 550px"
     >
       <!-- <div v-if="Object.keys(errors).length > 0 " class="text-red-400 border flex justify-center rounded p-4 border-red-400 bg-red-200 font-bold mb-1">
              {{ errors[Object.keys(errors)[0]][0] }}
@@ -42,12 +42,14 @@
 
               <div class="mb-4">
                 <label for="tags" class="uppercase">tags</label>
+                <span class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100">
                 <vue-tags-input
                 v-model="inputTag"
                 :tags="inputTags"
                 :autocomplete-items="filteredItems"
                 @tags-changed="update"
               />
+              </span>
               <!-- <input type="hidden" name="requestTags[]" :value="inputTag"> -->
               <span class="text-second-gray text-sm">Max of Four Tags</span>
               </div>
@@ -77,7 +79,7 @@
                 >
                 <span class="text-primary ml-3 text-xs">(optional)</span>
                 <ckeditor
-                  v-model="fields.job_responsibilities"
+                  v-model="fields.job_responspilty"
                   :config="editorConfig"
                 ></ckeditor>
               </div>
@@ -352,13 +354,14 @@ export default {
 <style >
 .vue-tags-input {
   max-width: 533px !important;
-  background: #e2e8f0 !important;
+  /* background-color: #edf2f7; */
+  background-color: #edf2f7 !important;
   border-radius: 5px;
 }
 .vue-tags-input .ti-input {
   border: none;
 }
 .vue-tags-input .ti-new-tag-input {
-  background: #e2e8f0 !important;
+  background: #edf2f7 !important;
 }
 </style>

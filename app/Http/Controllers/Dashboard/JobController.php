@@ -63,6 +63,7 @@ class JobController extends Controller
     public function update(Request $request, $id , JobService $jobService)
     {
            $job = Job::findOrFail($id);
+           $user = Auth::user();
            $user['image'] = $user->image;
            $jobService->updateJob($job , $request);
            return redirect()->route('jobs.index')->with('successMessage' , 'Your Job Successfully updated');

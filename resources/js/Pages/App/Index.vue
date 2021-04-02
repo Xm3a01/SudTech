@@ -1,26 +1,6 @@
 <template>
   <app title="SUDTECH">
     <template v-slot:header>
-      <nav>
-        <div class="px-20 py-6 flex justify-between items-center">
-          <div>
-            <a class="hidden sm:block text-white text-2xl font-bold">
-              <inertia-link href="/"
-                >S<span class="text-blue-300">UD</span>AJOB</inertia-link
-              >
-            </a>
-          </div>
-          <div >
-            <inertia-link
-              href="/dashboard/jobs/create"
-              class="px-6 py-2 border rounded border-gray-200 text-white font-bold text-sm hover:text-primary focus:outline-none"
-            >
-              Post a Job
-             
-            </inertia-link>
-          </div>
-        </div>
-      </nav>
       <div
         class="block sm:block text-center border-b-4 border-primary pb-24 pt-24 bg-dark bg-cover header-brand"
         style=""
@@ -172,7 +152,7 @@
             <div class="flex items-center">
               <inertia-link
                 :href="$route('job.show', job.id)"
-                class="px-4 py-1 text-sm hover:bg-white hover:text-primary bg-secondary focus:outline-none text-white rounded-sm"
+                class="px-4 py-1 text-sm hover:bg-red-400 hover:text-primary bg-secondary focus:outline-none text-white rounded-sm"
               >
                 Apply
               </inertia-link>
@@ -230,21 +210,12 @@
             </div>
             <div class="flex flex-wrap ml-16 py-4 w-auto">
               <span
-                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none"
-                >Laravel</span
+                v-for="tag in job.tags"
+                :key="tag.id"
+                class="px-2 bg-gray-600 text-gray-300 mr-1 mb-1 text-xs self-center rounded-lg shadow-sm focus:outline-none"
               >
-              <span
-                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none"
-                >Vue</span
-              >
-              <span
-                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none"
-                >React</span
-              >
-              <span
-                class="px-2 text-xs -py-1 mr-1 mb-1 self-center border border-gray-400 rounded-lg shadow-sm focus:outline-none"
-                >PHP</span
-              >
+                {{ tag.name }}
+              </span>
             </div>
           </div>
           <div class="flex justify-end">

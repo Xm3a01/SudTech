@@ -1,8 +1,8 @@
 <template>
   <div
-    class="bg-gray-100 p-6 rounded pt-20 shadow"
+    class="bg-gray-100 p-6 rounded pt-20 shadow md:min-h-screen"
     :class="title == 'Create job' ? 'overflow-y-auto' : ''"
-    :style="title == 'Create job' ? 'height:550px' : ''"
+    :style="title == 'Create job' ? 'min-height:550px' : ''"
   >
     <div v-if="Object.keys(errors).length > 0">
       {{ message(errors[Object.keys(errors)[0]][0]) }}
@@ -55,26 +55,35 @@
               >
             </div>
 
-
             <div class="mb-4">
               <label for="job location" class="uppercase">Owner</label>
 
-              <select name="" v-model="fields.user_id" id="" v-if="user.is_admin == 1" aria-placeholder="Select Owner"
-               class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
+              <select
+                name=""
+                v-model="fields.user_id"
+                id=""
+                v-if="user.is_admin == 1"
+                aria-placeholder="Select Owner"
+                class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
               >
-                <option v-for="owner in users" :key="owner" :value="owner.id">{{owner.name}}</option>
+                <option v-for="owner in users" :key="owner" :value="owner.id">
+                  {{ owner.name }}
+                </option>
               </select>
             </div>
 
             <div class="mb-4">
               <label for="tags" class="uppercase">tags</label>
-              
-              <vue-tags-input
-                v-model="inputTag"
-                :tags="inputTags"
-                :autocomplete-items="filteredItems"
-                @tags-changed="update"
-              />
+              <span
+                class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
+              >
+                <vue-tags-input
+                  v-model="inputTag"
+                  :tags="inputTags"
+                  :autocomplete-items="filteredItems"
+                  @tags-changed="update"
+                />
+              </span>
               <!-- <input type="hidden" name="requestTags[]" :value="inputTag"> -->
               <span class="text-second-gray text-sm">Max of Four Tags</span>
             </div>
@@ -160,7 +169,9 @@
               >
                 This email is public, the Apply button links to it if you do not
                 supply an Apply URL above
-                <span class="text-sm text-red" v-if="fieldseclect">{{fieldseclect}}</span>
+                <span class="text-sm text-red" v-if="fieldseclect">{{
+                  fieldseclect
+                }}</span>
               </span>
             </div>
 
@@ -221,7 +232,7 @@ export default {
     Multiselect,
     VueTagsInput,
   },
-  props: ["user", "users" , "tags", "title", "errors", "successMessage"],
+  props: ["user", "users", "tags", "title", "errors", "successMessage"],
   data() {
     return {
       fields: {},
@@ -229,7 +240,7 @@ export default {
       inputTag: "",
       inputTags: [],
       autocompleteItems: [],
-      fieldseclect: '',
+      fieldseclect: "",
       colors: [
         { name: "bg-red-300", text: "text-red-300", label: "Red" },
         { name: "bg-yellow-500", text: "text-yellow-500", label: "Yellow" },
@@ -269,14 +280,16 @@ export default {
     this.initItems();
   },
 
-  // watch: {
-  //   inputTag: "initItems",
-  // },
+  watch: {
+    inputTag: "initItems",
+  },
 
-   computed: {
-     filteredItems() {
-      return this.autocompleteItems.filter(tag => {
-        return tag.text.toLowerCase().indexOf(this.inputTag.toLowerCase()) !== -1;
+  computed: {
+    filteredItems() {
+      return this.autocompleteItems.filter((tag) => {
+        return (
+          tag.text.toLowerCase().indexOf(this.inputTag.toLowerCase()) !== -1
+        );
       });
     },
   },
@@ -330,24 +343,25 @@ export default {
     },
 
     Onsubmit() {
-        if(this.fields.apply_url == '' && this.fields.apply_email == '') {
-            this.fieldseclect = 'you must fill one of this file {apply email or apply url}.'
-        } else {
-      const formData = new FormData();
-      formData.append("logo", this.path);
-      let final = this.inputTags.map((t) => {
-        return t.id;
-      });
-      formData.append("inputTags", final);
-      _.each(this.fields, (value, key) => {
-        formData.append(key, value);
-      });
-      this.$inertia
-        .post("/dashboard/jobs", formData)
-        .then((res) => {})
-        .catch((err) => {
-          console.log(err);
+      if (this.fields.apply_url == "" && this.fields.apply_email == "") {
+        this.fieldseclect =
+          "you must fill one of this file {apply email or apply url}.";
+      } else {
+        const formData = new FormData();
+        formData.append("logo", this.path);
+        let final = this.inputTags.map((t) => {
+          return t.id;
         });
+        formData.append("inputTags", final);
+        _.each(this.fields, (value, key) => {
+          formData.append(key, value);
+        });
+        this.$inertia
+          .post("/dashboard/jobs", formData)
+          .then((res) => {})
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
     dismis() {
@@ -369,13 +383,13 @@ export default {
 <style >
 .vue-tags-input {
   max-width: 533px !important;
-  background: #e2e8f0 !important;
+  background: #edf2f7 !important;
   border-radius: 5px;
 }
 .vue-tags-input .ti-input {
   border: none;
 }
 .vue-tags-input .ti-new-tag-input {
-  background: #e2e8f0 !important;
+  background: #edf2f7 !important;
 }
 </style>
