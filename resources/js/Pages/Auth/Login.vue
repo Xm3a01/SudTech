@@ -1,22 +1,22 @@
 <template>
- <Auth title="SUDTECH . Login">
+ <Auth title="SUDAJOB . Login">
     <div class="bg-white w-3/12 max-w-lg rounded-lg shadow overflow-hidden mx-auto">
         <div class="py-4 px-6">
-            <div class="text-center font-bold text-gray-700 text-3xl">SUD<span class ="text-red-500">TE</span>CH</div>
+            <div class="text-center font-bold text-gray-700 text-3xl">S<span class ="text-blue-300">UD</span>AJOB</div>
             <div class="mt-1 mb-10 text-center font-bold text-gray-600 text-xl">Make you'r jobs available</div>
             <form  @submit.prevent="login">
                 <div class="mt-4 w-full">
                     <input type="email" name="email" placeholder="Email address" v-model="form.email"
                             class="w-full mt-2 text-sm py-2 px-4 bg-gray-100 text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white"/>
                          <div v-if="Object.keys(errors).length > 0 && errors.email" class="text-red-400 text-sm mt-1">
-                               {{ errors[Object.keys(errors)[0]][0] }}
+                               {{ errors[Object.keys(errors)[0]] }}
                       </div>
                 </div>
                 <div class="mt-4 w-full">
                     <input type="password" name="password" placeholder="Password" v-model="form.password"
                             class="w-full mt-2 text-sm py-2 px-4 bg-gray-100 text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white"/>
                             <div v-if="Object.keys(errors).length > 0 && errors.password" class="text-red-400 text-sm mt-1">
-                               {{ errors[Object.keys(errors)[1]][0] }}
+                               {{ errors[Object.keys(errors)[1]] }}
                       </div>
                 </div>
                 <div class="flex justify-between items-center mt-6">

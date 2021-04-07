@@ -64,7 +64,7 @@
                 id=""
                 v-if="user.is_admin == 1"
                 aria-placeholder="Select Owner"
-                class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
+                class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 form-select border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
               >
                 <option v-for="owner in users" :key="owner" :value="owner.id">
                   {{ owner.name }}

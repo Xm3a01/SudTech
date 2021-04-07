@@ -34,7 +34,7 @@
           <li
             class="px-2 py-2 text-sm"
             :class="
-              title == 'SUDTECH'
+              title == 'SUDAJOB'
                 ? 'bg-gray-900 border-l-2 border-blue-300'
                 : 'hover:bg-gray-900'
             "
@@ -94,7 +94,7 @@
            <li
             class="px-2 py-2 text-sm"
             :class="
-              title == 'User'
+              title == 'Dashboard . Users'
                 ? 'bg-gray-900 border-l-2 border-blue-300'
                 : 'hover:bg-gray-900'
             "
@@ -272,7 +272,7 @@
         <ul class="mt-6 md:hidden">
           <li class="px-2 py-2 text-sm hover:bg-gray-900 rounded mt-2">
             <inertia-link
-              :href="'/dashboard/users/' + user.id + '/edit'"
+              href="/dashboard/account/setting"
               class="mx-2 text-gray-300"
               >Account Settings</inertia-link
             >

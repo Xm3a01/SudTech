@@ -14,7 +14,10 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+      $user = Auth::user();
+      $user['image'] = $user->image;
+      $users = User::whereIs_admin(0)->get();
+      return Inertia::render('Dashboard/Users/Index' , ['users' => $users , 'user' => $user]);
     }
 
     public function create()
@@ -32,12 +35,11 @@ class UserController extends Controller
         return $id;
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = Auth::user();
-
-        $user['image'] = $user->image;
-        return Inertia::render('Dashboard/Setting/Edit',['user' => $user]);
+        $editUser = Auth::user();
+        $editUser['image'] = $editUser->image;
+        return Inertia::render('Dashboard/Users/Edit',['user' => $user , 'editUser' => $editUser]);
     }
 
     public function update(Request $request, $id)
@@ -48,6 +50,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function acount()
+    {
+      $user = Auth::user();
+
+        $user['image'] = $user->image;
+        return Inertia::render('Dashboard/Setting/Edit',['user' => $user]);
     }
 
     public function editUser(Request $request , $id)
@@ -71,5 +82,15 @@ class UserController extends Controller
         }
 
           return back()->with('successMessage' , 'Account updated');
+    }
+
+    public function paginate(Request $request)
+    {
+      $user = Auth::user();
+      $user['image'] = $user->image;
+
+      $users = User::paginate(10);
+    
+      return response()->json($users);
     }
 }

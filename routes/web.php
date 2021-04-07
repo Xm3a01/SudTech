@@ -35,6 +35,7 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::get('/', 'Dashboard\IndexController@index')->name('dashboard');
     Route::get('getData', 'Dashboard\JobController@getDate')->name('getDate');
     Route::get('getTrashData', 'Dashboard\TrashController@getTrashData')->name('getTrashData');
+    Route::post('account/setting', 'Dashboard\UserController@acount')->name('account.setting');
     Route::post('editUser/{id}', 'Dashboard\UserController@editUser')->name('editUser');
     Route::resource('jobs', 'Dashboard\JobController')->except('update');
     Route::post('jobs/update/{id}', 'Dashboard\JobController@update')->name('job.update');
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::resource('tags', 'Dashboard\TagController')->except('update');
     Route::post('tags/update/{tag}', 'Dashboard\TagController@update')->name('tags.update');
     Route::get('tag/paginate', 'Dashboard\TagController@paginate')->name('tag.paginate');
+    Route::get('users/paginate', 'Dashboard\UserController@paginate')->name('users.paginate');
 });
 Route::get('email', 'MailController@index')->name('email');
 
@@ -52,4 +54,8 @@ Route::group(['prefix' => 'admins' , 'middleware' => ['auth','role:super-admin']
 });
 Route::any('test', function () {
     return Inertia::render('App/Dashboard/Index');
+});
+
+Route::any('test', function () {
+    return Inertia::render('App/NewJob');
 });

@@ -1,5 +1,5 @@
 <template>
-  <app title="SUDTECH">
+  <app title="SUDAJOB">
     <template v-slot:header>
       <div
         class="block sm:block text-center border-b-4 border-primary pb-24 pt-24 bg-dark bg-cover header-brand"
