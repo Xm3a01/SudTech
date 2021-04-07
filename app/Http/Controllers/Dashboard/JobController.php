@@ -20,7 +20,7 @@ class JobController extends Controller
     {
         
         $user = Auth::user()->load('jobs');
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         if($user->is_admin == 1){
             $jobs = Job::paginate(10);
         } else {
@@ -37,7 +37,7 @@ class JobController extends Controller
         
         $tags = Tag::all();
         $user = Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         if($user->is_admin == 1) {
           $users = User::whereIs_admin(0)->get();
         }
@@ -54,7 +54,7 @@ class JobController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         $job = Job::findOrFail($id)->load('tags');
         $tags = Tag::all();
         return Inertia::render('Dashboard/Job/Edit',['job' => $job , 'user' => $user , 'tags' => $tags]);
@@ -64,7 +64,7 @@ class JobController extends Controller
     {
            $job = Job::findOrFail($id);
            $user = Auth::user();
-           $user['image'] = $user->image;
+           $user['avatar'] = $user->avatar;
            $jobService->updateJob($job , $request);
            return redirect()->route('jobs.index')->with('successMessage' , 'Your Job Successfully updated');
 
@@ -73,7 +73,7 @@ class JobController extends Controller
     public function destroy($id)
     {
         $job = Job::findOrFail($id);
-        if($job->image) {
+        if($job->avatar) {
             $job->clearMediaCollection('jobs');
         }
 
@@ -84,7 +84,7 @@ class JobController extends Controller
     public function getDate()
     {
         $user = Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         if($user->is_admin == 1){
             $jobs = Job::paginate(10);
         } else {

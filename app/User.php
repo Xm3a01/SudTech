@@ -46,7 +46,7 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Job::class);
     }
 
-    public function getImageAttribute(){
+    public function getAvatarAttribute(){
 
         return $this->getFirstMediaUrl('users');
 

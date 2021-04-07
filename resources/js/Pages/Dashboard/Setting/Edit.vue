@@ -1,6 +1,6 @@
 <template>
 
-    <dashboard title = "Edit . User" :user = "user">
+    <dashboard title = "Setting" :user = "user">
     <div v-if="successMessage">
        {{message(successMessage)}}
      </div>
@@ -11,7 +11,7 @@
                     <div class="flex flex-col">
                         <div class="flex justify-center">
                           <div class ="h-40 w-40 overflow-hidden px-auto bg-gray-600  rounded-full border-4 border-gray-600">
-                              <img class="h-32 w-40" :src="imageData ? imageData : user.image ? user.image:'/images/user.png'" alt="">
+                              <img class="h-32 w-40" :src="imageData ? imageData : user.avatar ? user.avatar:'/images/user.png'" alt="">
                               <label for="avatar" class="text-xs h-2 w-2 px-20 text-center rounded-full pr-2 bg-gray-400 text-gray-500 cursor-pointer">Edit</label>
                               <input type="file" name="avatar" id="avatar" @input="onSelectFile" hidden>
                           </div>
@@ -22,14 +22,14 @@
                         <input type="text" name="name" placeholder="Full name" v-model="form.name"
                               class="w-full mt-2 text-sm py-2 px-4 bg-gray-100 text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white"/>
                             <div v-if="Object.keys(errors).length > 0 && errors.name" class="text-red-400 text-sm mt-1">
-                               {{ errors[Object.keys(errors)[0]][0] }}
+                               {{ errors[Object.keys(errors)[0]] }}
                       </div>
                     </div>
                     <div class="mt-4 w-full">
                         <input type="email" name="email" placeholder="Email address" v-model="form.email"
                                class="w-full mt-2 text-sm py-2 px-4 bg-gray-100 text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white"/>
                         <div v-if="Object.keys(errors).length > 0 && errors.email" class="text-red-400 text-sm mt-1">
-                               {{ errors[Object.keys(errors)[1]][0] ? errors[Object.keys(errors)[1]][0] : errors.email }}
+                               {{ errors[Object.keys(errors)[1]] ? errors[Object.keys(errors)[1]] : errors.email }}
                       </div>
                     </div>
                     <div class="mt-4 w-full">

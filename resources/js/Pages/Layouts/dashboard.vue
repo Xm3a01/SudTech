@@ -94,7 +94,7 @@
            <li
             class="px-2 py-2 text-sm"
             :class="
-              title == 'Dashboard . Users'
+              title == 'Dashboard . Users' ||  'Edit User' || 'Create User'
                 ? 'bg-gray-900 border-l-2 border-blue-300'
                 : 'hover:bg-gray-900'
             "
@@ -294,7 +294,7 @@
           class="overflow-hidden image-text py-auto cursor-pointer"
           @click="settingPanel"
         >
-          <img class="h-10 w-10 rounded-full" :src="user.image" alt="" />
+          <img class="h-10 w-10 rounded-full" :src="user.avatar" alt="" />
         </div>
       </nav>
       <div class="absolute right-0 mt-1 z-40" v-if="account">
@@ -309,7 +309,7 @@
               >
                 <img
                   class="h-20 w-20 rounded-full p-2"
-                  :src="user.image"
+                  :src="user.avatar"
                   alt=""
                 />
               </div>
@@ -326,7 +326,7 @@
             </a>
             <div class="h-px w-full bg-gray-300"></div>
             <inertia-link
-              :href="'/dashboard/users/' + user.id + '/edit'"
+              :href="'/dashboard/account/setting'"
               class="hover:text-gray-500"
             >
               <div class="flex px-3 my-2">

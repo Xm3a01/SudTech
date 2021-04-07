@@ -14,8 +14,12 @@ class TrashController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user['image'] = $user->image;
-        $jobs = $user->jobs()->onlyTrashed()->paginate(10);
+        $user['avatar'] = $user->avatar;
+        if($user->is_admin == 1){
+            $jobs = jobs()->onlyTrashed()->paginate(10);
+        } else {
+            $jobs = $user->jobs()->onlyTrashed()->paginate(10);
+        }
         return Inertia::render('Dashboard/Job/Trash',['user' => $user , 'jobs' => $jobs]);
     }
 
@@ -64,7 +68,11 @@ class TrashController extends Controller
     public function getTrashData()
     {
         $user = Auth::user();
-        $jobs = $user->jobs()->onlyTrashed()->paginate(10);
+        if($user->is_admin == 1){
+            $jobs = jobs()->onlyTrashed()->paginate(10);
+        } else {
+            $jobs = $user->jobs()->onlyTrashed()->paginate(10);
+        }
         return response()->json($jobs);
         
     }

@@ -35,13 +35,13 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::get('/', 'Dashboard\IndexController@index')->name('dashboard');
     Route::get('getData', 'Dashboard\JobController@getDate')->name('getDate');
     Route::get('getTrashData', 'Dashboard\TrashController@getTrashData')->name('getTrashData');
-    Route::post('account/setting', 'Dashboard\UserController@acount')->name('account.setting');
+    Route::get('account/setting', 'Dashboard\UserController@acount')->name('account.setting');
     Route::post('editUser/{id}', 'Dashboard\UserController@editUser')->name('editUser');
     Route::resource('jobs', 'Dashboard\JobController')->except('update');
     Route::post('jobs/update/{id}', 'Dashboard\JobController@update')->name('job.update');
     Route::resource('trash', 'Dashboard\TrashController');
     Route::resource('users', 'Dashboard\UserController');
-    Route::post('users/update/{id}', 'Dashboard\UserController@update')->name('users.update');
+    Route::post('users/update/{user}', 'Dashboard\UserController@update')->name('users.update');
     Route::resource('tags', 'Dashboard\TagController')->except('update');
     Route::post('tags/update/{tag}', 'Dashboard\TagController@update')->name('tags.update');
     Route::get('tag/paginate', 'Dashboard\TagController@paginate')->name('tag.paginate');

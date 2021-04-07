@@ -14,7 +14,7 @@ class TagController extends Controller
     {
         $tags = Tag::latest()->paginate(10);
         $user = \Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         return Inertia::render('Dashboard/Tags/Index' , ['tags' => $tags , 'user' => $user]);
     }
 
@@ -22,7 +22,7 @@ class TagController extends Controller
     public function create()
     {
         $user = \Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         return Inertia::render('Dashboard/Tags/Create' , ['user' => $user]);
     }
 
@@ -49,7 +49,7 @@ class TagController extends Controller
     public function edit(Tag $tag)
     {
         $user = \Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         return Inertia::render('Dashboard/Tags/Edit' , ['user' => $user , 'tag' => $tag]);
     }
 

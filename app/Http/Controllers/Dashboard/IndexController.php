@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $role = '';
         $user = Auth::user();
-        $user['image'] = $user->image;
+        $user['avatar'] = $user->avatar;
         $newers =  $user->jobs()->where('created_at' ,'>', Carbon::now()->subWeeks(4)->subDays(2))->count();
         $olders =  $user->jobs()->where('created_at' ,'<', Carbon::now()->subWeeks(4)->subDays(2))->count();
         $user->jobs()->where('created_at' ,'<', Carbon::now()->subWeeks(8)->subDays(4))->delete();
