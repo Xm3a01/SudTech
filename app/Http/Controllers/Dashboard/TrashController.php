@@ -20,15 +20,15 @@ class TrashController extends Controller
         } else {
             $jobs = $user->jobs()->onlyTrashed()->paginate(10);
         }
-        return Inertia::render('Dashboard/Job/Trash',['user' => $user , 'jobs' => $jobs]);
+        return Inertia::render('Dashboard/Client/Trash',['user' => $user , 'jobs' => $jobs]);
     }
 
     public function create()
     {
-        
+
     }
 
-   
+
     public function store(Request $request)
     {
         //
@@ -74,6 +74,6 @@ class TrashController extends Controller
             $jobs = $user->jobs()->onlyTrashed()->paginate(10);
         }
         return response()->json($jobs);
-        
+
     }
 }

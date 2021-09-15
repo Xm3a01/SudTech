@@ -27,7 +27,7 @@
     >
       New job
     </h2>
-    <div class="container w-9/12 mx-auto px-4 mb-12 mt-8">
+    <div class="container w-9/12 mx-auto mb-12 mt-8">
       <form @submit.prevent="Onsubmit">
         <div class="sm:w-3/4 mx-auto">
           <div>

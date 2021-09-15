@@ -18,7 +18,7 @@ class JobController extends Controller
 
     public function index()
     {
-        
+
         $user = Auth::user()->load('jobs');
         $user['avatar'] = $user->avatar;
         if($user->is_admin == 1){
@@ -28,20 +28,21 @@ class JobController extends Controller
             $jobs = $user->jobs()->paginate(10);
         }
         $jobs->load('tags');
-        return Inertia::render('Dashboard/Job/Index',['user' => $user , 'jobs' => $jobs]);
+        // return $job;
+        return Inertia::render('Dashboard/Client/Job',['user' => $user , 'jobs' => $jobs]);
     }
 
     public function create()
     {
         $users = '';
-        
+
         $tags = Tag::all();
         $user = Auth::user();
         $user['avatar'] = $user->avatar;
         if($user->is_admin == 1) {
           $users = User::whereIs_admin(0)->get();
         }
-        return Inertia::render('Dashboard/Job/Create',['tags' => $tags , 'user' => $user , 'users' => $users]);
+        return Inertia::render('Dashboard/Client/NewJob',['tags' => $tags , 'user' => $user , 'users' => $users]);
     }
 
     public function store(JobRequest $request, JobService $jobService)
@@ -57,7 +58,7 @@ class JobController extends Controller
         $user['avatar'] = $user->avatar;
         $job = Job::findOrFail($id)->load('tags');
         $tags = Tag::all();
-        return Inertia::render('Dashboard/Job/Edit',['job' => $job , 'user' => $user , 'tags' => $tags]);
+        return Inertia::render('Dashboard/Client/Edit',['job' => $job , 'user' => $user , 'tags' => $tags]);
     }
 
     public function update(Request $request, $id , JobService $jobService)
@@ -99,7 +100,7 @@ class JobController extends Controller
         $tags = [];
 
         foreach ($tags as $key => $value) {
-            $tags[$key] = Tags::where('name', $value)->first()->id;
+            $tags[$key] = Tag::where('name', $value)->first()->id;
         }
         return $tags;
     }

@@ -13,16 +13,18 @@
           <div >
             <inertia-link
               href="/dashboard/jobs/create"
-              class="px-6 py-2 border rounded border-gray-200 text-white font-bold text-sm hover:text-primary focus:outline-none"
+              class="px-6 py-2 border rounded border-blue-300 text-white font-bold text-sm hover:text-primary focus:outline-none"
             >
-              Post a Job
-             
+              Post new job
+
             </inertia-link>
           </div>
         </div>
       </nav>
       <slot name="header" class="header-brand"></slot>
     </header>
+
+    <slot name="sidebar" ></slot>
 
     <slot />
 

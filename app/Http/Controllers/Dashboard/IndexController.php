@@ -25,12 +25,14 @@ class IndexController extends Controller
         if($user->hasRole('super-admin')) {
             $role = 'super-admin';
         }
-        return Inertia::render('Dashboard/Index',[
+        $jobs = Job::latest()->take(5)->paginate(5);
+        return Inertia::render('Dashboard/Client/Index',[
             'user'=>$user,
-            'olders' => $olders , 
+            'olders' => $olders ,
             'newers' => $newers,
-            'deleted' => $deleted , 
-            'role' => $role
+            'deleted' => $deleted ,
+            'role' => $role,
+            'jobs' => $jobs
             ]);
     }
 }

@@ -5,6 +5,7 @@ use App\Models\Job;
 use App\Models\Tag;
 use Inertia\Inertia;
 use App\Mail\SendJob;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,5 +58,7 @@ Route::any('test', function () {
 });
 
 Route::any('test', function () {
-    return Inertia::render('App/NewJob');
+    $jobs = Job::paginate(2);
+    $user = Auth::user();
+    return Inertia::render('Dashboard/Client/PastJob'  , ['jobs' => $jobs , 'user' => $user]);
 });

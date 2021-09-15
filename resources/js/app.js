@@ -6,7 +6,10 @@ import Vue from "vue";
 import CKEditor from 'ckeditor4-vue';
 import VueSwal from 'vue-swal';
 import VueClipboard from 'vue-clipboard2';
+import { InertiaProgress } from '@inertiajs/progress'
 
+
+InertiaProgress.init()
 Vue.use(VueClipboard)
 Vue.use(VueSwal)
 Vue.use(Toasted)
