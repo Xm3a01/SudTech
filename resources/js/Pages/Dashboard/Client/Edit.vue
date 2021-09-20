@@ -323,7 +323,7 @@ export default {
       let final = this.inputTags.map((t) => {
           return t.id;
       });
-      formData.append("tags", final);
+      formData.append("inputTags", final);
 
       _.each(this.fields, (value, key) => {
         formData.append(key, value);

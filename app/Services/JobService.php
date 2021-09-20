@@ -40,7 +40,7 @@ class JobService {
 
     public function updateJob($job , $request)
     {
-        // dd($request->status);
+        // dd($request->inputTags);
            $job->status = $request->status;
           if ($request->has('job_title')) {
               $job->job_title = $request->job_title;
@@ -69,8 +69,8 @@ class JobService {
           if ($request->has('job_color')) {
               $job->job_color = $request->job_color;
           }
-          if($request->has('tags')) {
-            $tage_id = array_map('intval' , explode( ',' , $request->tags));
+          if($request->has('inputTags')) {
+            $tage_id = array_map('intval' , explode( ',' , $request->inputTags));
             $job->tags()->sync($tage_id);
           }
             $job->save();

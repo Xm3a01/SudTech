@@ -280,6 +280,10 @@ export default {
     this.initItems();
   },
 
+  watch: {
+    inputTag: "initItems",
+  },
+
   computed: {
     filteredItems() {
       return this.autocompleteItems.filter((tag) => {
