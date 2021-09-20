@@ -261,6 +261,10 @@ export default {
     this.initItems()
   },
 
+//   watch: {
+//     inputTag: "initItems",
+//   },
+
   computed: {
      filteredItems() {
       return this.autocompleteItems.filter(tag => {
@@ -316,11 +320,15 @@ export default {
     OnUpdate(id) {
       const formData = new FormData();
       formData.append("logo", this.path);
-      formData.append("tags", this.inputTags);
+      let final = this.inputTags.map((t) => {
+          return t.id;
+      });
+      formData.append("tags", final);
 
       _.each(this.fields, (value, key) => {
         formData.append(key, value);
       });
+    //   console.log(formData)
       this.$inertia
         .post("/dashboard/jobs/update/" + id, formData)
         .then((res) => {})

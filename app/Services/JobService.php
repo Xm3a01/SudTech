@@ -40,7 +40,7 @@ class JobService {
 
     public function updateJob($job , $request)
     {
-        // dd($request->tags);
+        // dd($request->status);
            $job->status = $request->status;
           if ($request->has('job_title')) {
               $job->job_title = $request->job_title;
