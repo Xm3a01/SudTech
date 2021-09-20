@@ -20,29 +20,16 @@ class JobController extends Controller
     {
 
         $user = Auth::user()->load('jobs');
-        $user['avatar'] = $user->avatar;
-        if($user->is_admin == 1){
-            $jobs = Job::paginate(10);
-        } else {
-
-            $jobs = $user->jobs()->paginate(10);
-        }
+        $jobs = $user->jobs()->paginate(10);
         $jobs->load('tags');
-        // return $job;
+
         return Inertia::render('Dashboard/Client/Job',['user' => $user , 'jobs' => $jobs]);
     }
 
     public function create()
     {
-        $users = '';
-
         $tags = Tag::all();
-        $user = Auth::user();
-        $user['avatar'] = $user->avatar;
-        if($user->is_admin == 1) {
-          $users = User::whereIs_admin(0)->get();
-        }
-        return Inertia::render('Dashboard/Client/NewJob',['tags' => $tags , 'user' => $user , 'users' => $users]);
+        return Inertia::render('Dashboard/Client/NewJob',['tags' => $tags]);
     }
 
     public function store(JobRequest $request, JobService $jobService)
@@ -54,18 +41,14 @@ class JobController extends Controller
 
     public function edit($id)
     {
-        $user = Auth::user();
-        $user['avatar'] = $user->avatar;
         $job = Job::findOrFail($id)->load('tags');
         $tags = Tag::all();
-        return Inertia::render('Dashboard/Client/Edit',['job' => $job , 'user' => $user , 'tags' => $tags]);
+        return Inertia::render('Dashboard/Client/Edit',['job' => $job  , 'tags' => $tags]);
     }
 
     public function update(Request $request, $id , JobService $jobService)
     {
            $job = Job::findOrFail($id);
-           $user = Auth::user();
-           $user['avatar'] = $user->avatar;
            $jobService->updateJob($job , $request);
            return redirect()->route('jobs.index')->with('successMessage' , 'Your Job Successfully updated');
 
@@ -74,9 +57,9 @@ class JobController extends Controller
     public function destroy($id)
     {
         $job = Job::findOrFail($id);
-        if($job->avatar) {
-            $job->clearMediaCollection('jobs');
-        }
+        // if($job->avatar) {
+        //     $job->clearMediaCollection('jobs');
+        // }
 
         $job->delete();
         return back()->with('successMessage','deleted done !');
@@ -85,23 +68,7 @@ class JobController extends Controller
     public function getDate()
     {
         $user = Auth::user();
-        $user['avatar'] = $user->avatar;
-        if($user->is_admin == 1){
-            $jobs = Job::paginate(10);
-        } else {
-
-            $jobs = $user->jobs()->paginate(10);
-        }
-        return response()->json($jobs);
-    }
-
-    public function getID($tags)
-    {
-        $tags = [];
-
-        foreach ($tags as $key => $value) {
-            $tags[$key] = Tag::where('name', $value)->first()->id;
-        }
-        return $tags;
+       $jobs = $user->jobs()->paginate(10);
+       return response()->json($jobs);
     }
 }

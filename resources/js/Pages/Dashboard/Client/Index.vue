@@ -1,9 +1,5 @@
 <template>
-  <app title="SUDAJOB">
-    <template v-slot:header> </template>
-    <template v-slot:sidebar>
-        <sidebar />
-    </template>
+  <client-layout title="SUDAJOB">
 
     <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
       <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-3">
@@ -366,21 +362,21 @@
     </div>
 
     <!-- End Cards -->
-  </app>
+  </client-layout>
 </template>
 
 <script>
-import App from "../../Layouts/App.vue";
+import ClientLayout from "../../Layouts/Client.vue";
 import Paginate from "laravel-vue-pagination";
 import Sidebar from './Include/Sidebar.vue';
 
 export default {
   components: {
     Paginate,
-    App,
+    ClientLayout,
     Sidebar
   },
-  props: ["user", "jobs", "successMessage" ,'deleted' , 'newers' , 'olders'],
+  props: ["jobs", "successMessage" ,'deleted' , 'newers' , 'olders'],
 
   data() {
     return {

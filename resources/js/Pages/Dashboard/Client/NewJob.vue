@@ -1,19 +1,18 @@
 <template>
-  <app title="SUDAJOB">
-    <template v-slot:header> </template>
+  <client-layout title="SUDAJOB">
   <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
     <Form :user='user' :users = "users" :tags = 'tags' title ="Create job" :errors = 'errors'></Form>
   </div>
     <!-- End Cards -->
-  </app>
+  </client-layout>
 </template>
 
 <script>
-import App from "../../Layouts/App.vue";
+import ClientLayout from "../../Layouts/Client.vue";
 import Form from '../../../components/Form.vue'
 export default {
   components: {
-    App,
+    ClientLayout,
     Form
   },
   props: ["jobs",'user','tags' , 'errors' , 'users'],

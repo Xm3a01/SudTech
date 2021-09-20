@@ -1,12 +1,8 @@
 <template>
-  <app title="Dashboard . Trash" :user="user">
+  <client-layout title="Dashboard . Trash" :user="user">
     <div v-if="successMessage">
       {{ message(successMessage) }}
     </div>
-
-    <template v-slot:sidebar>
-      <sidebar />
-    </template>
 
     <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
       <div class="box-wrapper">
@@ -139,7 +135,7 @@
                       "
                       style="text-align: start"
                     >
-                      Job Description
+                      Job Location
                     </th>
                     <th
                       class="px-6 py-3 border-b border-gray-200 bg-gray-50"
@@ -257,7 +253,7 @@
                         text-gray-500
                       "
                     >
-                      {{ job.job_description | strippedContent }}
+                      {{ job.job_location  }}
                     </td>
                     <td
                       class="
@@ -313,20 +309,19 @@
         </div>
       </div>
     </div>
-  </app>
+  </client-layout>
 </template>
 
 <script>
-import App from "./../../Layouts/App.vue";
-import Sidebar from "./Include/Sidebar.vue";
+import ClientLayout from "./../../Layouts/Client.vue";
 import Paginate from "laravel-vue-pagination";
 export default {
   components: {
-    App,
+    ClientLayout,
     Paginate,
-    Sidebar
+
   },
-  props: ["user", "jobs", "Count", "successMessage"],
+  props: ["jobs", "Count", "successMessage"],
 
   data() {
     return {

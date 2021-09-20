@@ -14,7 +14,7 @@ class UserController extends Controller
 {
 
   use AttachmentTrait;
-  
+
     public function index()
     {
       $user = Auth::user();
@@ -89,10 +89,7 @@ class UserController extends Controller
 
     public function acount()
     {
-      $user = Auth::user();
-
-        $user['avatar'] = $user->avatar;
-        return Inertia::render('Dashboard/Setting/Edit',['user' => $user]);
+        return Inertia::render('Dashboard/Client/Setting/Edit');
     }
 
     public function editUser(Request $request , $id)
@@ -124,7 +121,7 @@ class UserController extends Controller
       $user['avatar'] = $user->avatar;
 
       $users = User::paginate(10);
-    
+
       return response()->json($users);
     }
 }

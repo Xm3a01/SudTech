@@ -1,12 +1,9 @@
 <template>
-  <app title="Edit job" :user="user">
+  <client-layout title="Edit job">
     <div
       class="bg-gray-100 p-6 rounded pt-20 shadow overflow-y-auto md:min-h-screen "
       style="min-height: 550px"
     >
-      <!-- <div v-if="Object.keys(errors).length > 0 " class="text-red-400 border flex justify-center rounded p-4 border-red-400 bg-red-200 font-bold mb-1">
-             {{ errors[Object.keys(errors)[0]][0] }}
-           </div> -->
       <h2
         class="text-2xl w-9/12 mx-auto font-medium mb-5 text-gray-500 uppercase"
       >
@@ -202,19 +199,19 @@
         </form>
       </div>
     </div>
-  </app>
+  </client-layout>
 </template>
 
 <script>
-import App from "../../Layouts/App.vue";
+import ClientLayout from "../../Layouts/Client.vue";
 import VueTagsInput from "@johmun/vue-tags-input";
 
 export default {
   components: {
-    App,
+    ClientLayout,
     VueTagsInput,
   },
-  props: ["user", "tags", "errors", "job"],
+  props: ["tags", "errors", "job"],
 
   data() {
     return {

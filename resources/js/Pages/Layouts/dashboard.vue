@@ -137,7 +137,7 @@
                 @click="loading = true"
                 class="flex items-center"
               >
-                
+
                 <svg
                   class="w-6 text-gray-500"
                   fill="currentColor"
@@ -165,7 +165,7 @@
                 class="flex items-center"
                 @click="loading = true"
               >
-                
+
                 <svg
                   class="w-6 text-gray-500"
                   fill="currentColor"
@@ -223,7 +223,7 @@
               class="flex items-center"
               @click="loading = true"
             >
-            
+
               <svg
                 class="w-6 text-gray-500"
                 fill="currentColor"
@@ -252,7 +252,7 @@
               class="flex items-center"
               @click="loading = true"
             >
-              
+
               <svg
                 class="w-6 text-gray-500"
                 fill="currentColor"

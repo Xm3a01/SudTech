@@ -55,7 +55,7 @@
               >
             </div>
 
-            <div class="mb-4">
+            <!-- <div class="mb-4">
               <label for="job location" class="uppercase">Owner</label>
 
               <select
@@ -70,7 +70,7 @@
                   {{ owner.name }}
                 </option>
               </select>
-            </div>
+            </div> -->
 
             <div class="mb-4">
               <label for="tags" class="uppercase">tags</label>
