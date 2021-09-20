@@ -5,7 +5,7 @@
         <div class="px-20 py-6 flex justify-between items-center">
           <div>
             <a class="hidden sm:block text-white font-bold">
-              <inertia-link href="/" class="text-2xl">Client.</inertia-link>
+              <inertia-link href="/dashboard" class="text-2xl">Client.</inertia-link>
               <code>S<span class="text-blue-300">UD</span>AJOB</code>
             </a>
           </div>
