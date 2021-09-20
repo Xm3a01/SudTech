@@ -1,5 +1,6 @@
 <template>
   <client-layout title="Edit job">
+   <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
     <div
       class="bg-gray-100 p-6 rounded pt-20 shadow overflow-y-auto md:min-h-screen "
       style="min-height: 550px"
@@ -199,6 +200,7 @@
         </form>
       </div>
     </div>
+   </div>
   </client-layout>
 </template>
 
@@ -314,7 +316,7 @@ export default {
     OnUpdate(id) {
       const formData = new FormData();
       formData.append("logo", this.path);
-      formData.append("tags", this.tags);
+      formData.append("tags", this.inputTags);
 
       _.each(this.fields, (value, key) => {
         formData.append(key, value);
