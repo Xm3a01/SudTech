@@ -1,28 +1,5 @@
 <template>
   <app title="SUDAJOB">
-    <template v-slot:header>
-      <div
-        class="block sm:block text-center border-b-4 border-primary pb-24 pt-24 bg-dark bg-cover header-brand"
-        style=""
-      >
-        <div class="px-20 text-white text-xl flex justify-start">
-          <span class="border-b border-white"
-            >S<span class="text-blue-300 text-bold ">UD</span>AJOB job board</span
-          >
-        </div>
-        <div class="px-20 xs:hidden text-white text-sm flex justify-start">
-         <p>
-          Sudajob job board connecting the best jobs with top talent
-          and we are passionate about technology
-         </p>
-        </div>
-        <div class="px-20 box md:hidden text-white text-sm flex justify-start">
-          <p>Sudajob job board connecting the best jobs with top talent
-          We are passionate about technology
-          </p>
-        </div>
-      </div>
-    </template>
 
     <div class="box pt-20 w-9/12 md:w-3/5 mx-auto">
       <div class="box-wrapper">
