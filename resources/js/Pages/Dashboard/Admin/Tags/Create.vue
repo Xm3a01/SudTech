@@ -24,7 +24,7 @@
                   v-model="fields.name"
                   class="px-3 py-1 rounded bg-gray-200 w-full text-gray-700 border border-gray-300 rounded block appearance-none placeholder-gray-500 focus:outline-none focus:bg-gray-100"
                 />
-                
+
               </div>
             </div>
             <div class="flex justify-center mt-10">
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-    import Dashboard from './../../Layouts/dashboard'
+    import Dashboard from '../../../Layouts/dashboard'
 
     export default {
         components: {
@@ -68,9 +68,9 @@
             .then((res) => {})
             .catch((err) => {
             console.log(err);
-            }); 
+            });
         }
-         
+
      }
     }
 

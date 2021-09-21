@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import Layout from "./../../Layouts/dashboard";
+import Layout from "../../../Layouts/dashboard";
 import Paginate from "laravel-vue-pagination";
 export default {
   components: {

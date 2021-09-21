@@ -34,7 +34,7 @@
                     </div>
                     <div class="mt-4 w-full">
                         <div class="flex" v-if="!changePassord">
-                        <input disabled :type="type" name="password" placeholder="Password" :value="form.user_password" 
+                        <input disabled :type="type" name="password" placeholder="Password" :value="form.user_password"
                                class="w-full bg-gray-300 mt-2 text-sm py-2 px-4 select-none text-gray-700 border border-gray-300 rounded-l  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white"/>
                         <div class="flex divide-x divide-gray-400">
                           <a href = "" @click.prevent ="changePassord = true"  class="text-xs text-blue-300 mt-2 h-10 bg-gray-300 px-1  pt-2"> Change </a>
@@ -48,7 +48,7 @@
                         </div>
                          <input v-if="changePassord" type="password" name="password" placeholder="New password" v-model="form.password"
                                class="w-full mt-2 text-sm py-2 px-4 bg-gray-100 text-gray-700 border border-gray-300 rounded  block appearance-none placeholder-gray-500 focus:outline-none focus:bg-white"/>
-                    </div>  
+                    </div>
                     <div class="flex justify-between items-center mt-6">
                         <a :href="'/dashboard/users/'+user.id" class="text-gray-600 text-sm hover:text-gray-500"></a>
                     </div>
@@ -61,14 +61,14 @@
                     </div>
                 </form>
             </div>
-            
+
         </div>
   </dashboard>
 
 </template>
 
 <script>
-    import Dashboard from './../../Layouts/dashboard'
+    import Dashboard from '../../../Layouts/dashboard'
     import Multiselect from 'vue-multiselect'
 
     export default {
@@ -109,7 +109,7 @@
 
             onCopy: function (e) {
              event.preventDefault();
-             swal({ 
+             swal({
                 title: "You just copied",
                 text: this.type == 'password' ? '**********':e.text,
                 icon: "success",
@@ -129,7 +129,7 @@
                     this.lable = 'Hide'
                 } else {
                     this.type = 'password'
-                    this.lable = 'Show' 
+                    this.lable = 'Show'
                 }
             },
             onchange(e){
@@ -149,7 +149,7 @@
            }
         },
         message(string){
-        swal({ 
+        swal({
             title: "Success",
             text: string,
             icon: "success",

@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import Dashboard from './../../Layouts/dashboard'
+    import Dashboard from '../../../Layouts/dashboard.vue'
     import Multiselect from 'vue-multiselect'
-    import Form from '../../../components/Form'
+    import Form from '../../../../components/Form.vue'
 
     export default {
         components: {
@@ -20,14 +20,14 @@
 
         data() {
             return {
-                
+
             }
         },
 
         mounted() {
         },
         methods:{
-         
+
      }
     }
 

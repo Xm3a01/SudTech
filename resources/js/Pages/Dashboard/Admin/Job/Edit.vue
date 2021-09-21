@@ -206,7 +206,7 @@
 </template>
 
 <script>
-import Dashboard from "./../../Layouts/dashboard";
+import Dashboard from "../../../Layouts/dashboard";
 import VueTagsInput from "@johmun/vue-tags-input";
 
 export default {

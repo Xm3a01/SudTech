@@ -44,7 +44,7 @@
       </div>
 
       <ul>
-        <div class="flex items-center " :class="trager == 1? 'side-item' : ''" @click="btnToggle(1)">
+        <div class="flex items-center " :class="trager === 1 ? 'side-item' : ''" @click="btnToggle(1)">
           <div class="p-2">
             <svg class="w-5 h-5" viewBox="0 0 20 20">
               <path
@@ -58,7 +58,7 @@
           </li>
         </div>
 
-        <div class="flex items-center" :class="trager == 2? 'side-item' : ''"  @click="btnToggle(2)">
+        <div class="flex items-center" :class="trager == 2 ? 'side-item' : ''"  @click="btnToggle(2)">
           <div class="p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@
             </svg>
           </div>
           <li class="">
-            <inertia-link href="/dashboard/trash">Trash {{trager}}</inertia-link>
+            <inertia-link href="/dashboard/trash">Trash</inertia-link>
           </li>
         </div>
       </ul>
@@ -86,7 +86,7 @@ export default {
     data() {
         return {
             // 0 , 1 ,2
-            trager: '',
+            trager: 0,
         }
     },
     methods: {

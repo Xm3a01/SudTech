@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import Dashboard from "./../../Layouts/dashboard";
+import Dashboard from "../../../Layouts/dashboard";
 import Multiselect from "vue-multiselect";
 
 export default {
@@ -94,12 +94,12 @@ export default {
       if(this.path) {
         const formData = new FormData();
         formData.append("avatar", this.path);
-  
+
         _.each(this.fields, (value, key) => {
           formData.append(key, value);
         });
        passData = formData;
-        
+
       }
       this.$inertia
         .post("/dashboard/users", passData)

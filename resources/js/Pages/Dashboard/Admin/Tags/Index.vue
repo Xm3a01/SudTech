@@ -7,7 +7,7 @@
     <div class="bg-gray-100 p-6 rounded shadow">
         <h2 class="text-2xl font-medium mb-5 text-gray-500 uppercase">Tags</h2>
         <div class="flex justify-between">
-           
+
 
         <div class="shadow flex  rounded">
             <input  class="w-full rounded p-2 focus:outline-none" type="text" placeholder="Search..." v-model="search">
@@ -62,18 +62,18 @@
                 </div>
             </div>
             <div class="w-64">
-            <Paginate 
-                class="flex justify-between border border-gray-200  text-blue-500 bg-gray-200 py-1 px-4 mt-2 rounded text-xs font-bold " 
+            <Paginate
+                class="flex justify-between border border-gray-200  text-blue-500 bg-gray-200 py-1 px-4 mt-2 rounded text-xs font-bold "
                 :data="all" @pagination-change-page="getTags" :limit="1">
             </Paginate>
             </div>
         </div>
     </div>
-  </Layout> 
+  </Layout>
 </template>
 
 <script>
-import Layout from './../../Layouts/dashboard'
+import Layout from '../../../Layouts/dashboard'
 import Paginate from 'laravel-vue-pagination'
 export default {
 components:{
@@ -102,7 +102,7 @@ methods: {
     },
 
     deletejob(id) {
-        swal({ 
+        swal({
             title: "Confirm delete",
             text: 'Do you really want to delete?',
             icon: "error",
@@ -121,7 +121,7 @@ methods: {
     },
 
     message(string){
-        swal({ 
+        swal({
             title: "Success",
             text: string,
             icon: "success",
@@ -144,7 +144,7 @@ computed:{
 },
 filters: {
     strippedContent: function(string) {
-           let des =  string.replace(/<\/?[^>]+>/ig, " "); 
+           let des =  string.replace(/<\/?[^>]+>/ig, " ");
            return des.substring(0,30) + '...';
     },
   }

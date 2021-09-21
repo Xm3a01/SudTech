@@ -73,8 +73,8 @@
                 </div>
             </div>
             <div class="w-48">
-            <Paginate 
-                class="flex justify-between border border-blue-400  text-white bg-gray-200 py-1 px-4 mt-2 rounded text-xs font-bold " 
+            <Paginate
+                class="flex justify-between border border-blue-400  text-white bg-gray-200 py-1 px-4 mt-2 rounded text-xs font-bold "
                 :data="all" @pagination-change-page="getJob" :limit="1">
             </Paginate>
             </div>
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import Layout from './../../Layouts/dashboard'
+import Layout from '../../../Layouts/dashboard'
 import Paginate from 'laravel-vue-pagination'
 export default {
 components:{
@@ -114,7 +114,7 @@ computed:{
 
 filters: {
     strippedContent: function(string) {
-           let des =  string.replace(/<\/?[^>]+>/ig, " "); 
+           let des =  string.replace(/<\/?[^>]+>/ig, " ");
            return des.substring(0,30) + '...';
     }
 },
@@ -134,7 +134,7 @@ methods: {
     },
 
     message(string){
-        swal({ 
+        swal({
             title: "Success",
             text: string,
             icon: "success",

@@ -143,7 +143,7 @@
   </Layout>
 </template>
 <script>
-import Layout from "../Layouts/dashboard";
+import Layout from "../../Layouts/dashboard";
 export default {
   components: {
     Layout,
