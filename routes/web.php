@@ -27,6 +27,11 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
+// Admin
+Route::get('admins/login/form', 'Auth\AdminLoginController@showLoginForm')->name('admins.login.form');
+Route::post('admins/login', 'Auth\AdminLoginController@login')->name('admins.login');
+Route::get('admins/logout', 'Auth\AdminLoginController@logout')->name('admins.logout');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/job/show/{job}', 'JobController@show')->name('job.show');
 Route::get('/job/create', 'JobController@create')->name('job.create');
@@ -50,11 +55,10 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
 });
 Route::get('email', 'MailController@index')->name('email');
 
-Route::group(['prefix' => 'admins' , 'middleware' => ['auth','role:super-admin']], function () {
-    Route::resource('/', 'Dashboard\PermissionController');
-});
-Route::any('test', function () {
-    return Inertia::render('App/Dashboard/Index');
+Route::group(['prefix' => 'admins/dashboard' , 'middleware' => 'auth:admin'], function () {
+    Route::get('/', function () {
+        return "Hi Admin";
+    })->name('admins.dashboard');
 });
 
 Route::any('test', function () {
