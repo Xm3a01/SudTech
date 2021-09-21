@@ -135,9 +135,9 @@
                   <span class="whitespace-no-wrap"> </span>
                 </p>
               </div>
-              <line-chart :chartdata="newers" :options="chartOptions"/>
             </div>
           </div>
+              <line-chart :chartdata="chartdata" :options="chartOptions"/>
         </div>
       </div>
     </div>
@@ -145,7 +145,7 @@
 </template>
 <script>
 import Layout from "../../Layouts/dashboard";
-import LineChart from "./Chart/LineChart";
+import LineChart from "./Chart/LineChart.vue";
 export default {
   components: {
     Layout,
@@ -156,7 +156,9 @@ export default {
 
   data() {
       return {
-          user:this.$page.authadmin
+          user:this.$page.authadmin,
+          chartOptions: {name : '1' , age:'2' , last:'3'},
+          chartdata : {name: 'Ali' , age: 30 , last: 'coll'}
       }
   }
 };
