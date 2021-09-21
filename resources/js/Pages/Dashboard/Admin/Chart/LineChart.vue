@@ -1,23 +1,23 @@
-<script>
+// <script>
 
-// import { chart } from 'chartjs'
-import { Line } from 'vue-chartjs'
+// // import { chart } from 'chartjs'
+// import { Line } from 'vue-chartjs'
 
-export default {
-  extends: Line,
-  props: {
-    chartdata: {
-      type: Object,
-      default: null
-    },
-    options: {
-      type: Object,
-      default: null
-    }
-  },
-  mounted () {
-    this.renderChart(this.chartdata, this.options)
-  }
-}
-</script>
+// export default {
+//   extends: Line,
+//   props: {
+//     chartdata: {
+//       type: Object,
+//       default: null
+//     },
+//     options: {
+//       type: Object,
+//       default: null
+//     }
+//   },
+//   mounted () {
+//     this.renderChart(this.chartdata, this.options)
+//   }
+// }
+// </script>
 

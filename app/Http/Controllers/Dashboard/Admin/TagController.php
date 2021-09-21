@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Amin;
 
 use App\Models\Tag;
 use Inertia\Inertia;
@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class TagController extends Controller
 {
-   
+
     public function index()
     {
         $tags = Tag::latest()->paginate(10);
@@ -18,7 +18,7 @@ class TagController extends Controller
         return Inertia::render('Dashboard/Tags/Index' , ['tags' => $tags , 'user' => $user]);
     }
 
-  
+
     public function create()
     {
         $user = \Auth::user();
@@ -26,7 +26,7 @@ class TagController extends Controller
         return Inertia::render('Dashboard/Tags/Create' , ['user' => $user]);
     }
 
-    
+
     public function store(Request $request)
     {
         $this->validate($request , [
@@ -39,13 +39,13 @@ class TagController extends Controller
         return redirect()->route('tags.index');
     }
 
-   
+
     public function show($id)
     {
         //
     }
 
-    
+
     public function edit(Tag $tag)
     {
         $user = \Auth::user();
@@ -53,7 +53,7 @@ class TagController extends Controller
         return Inertia::render('Dashboard/Tags/Edit' , ['user' => $user , 'tag' => $tag]);
     }
 
-    
+
     public function update(Request $request, Tag $tag)
     {
         $this->validate($request , [
@@ -66,7 +66,7 @@ class TagController extends Controller
         return redirect()->route('tags.index');
     }
 
-  
+
     public function destroy(Tag $tag)
     {
         $tag->delete();

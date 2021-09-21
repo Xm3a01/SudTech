@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Admin;
 
 use DB;
 use App\User;
@@ -18,18 +18,16 @@ class JobController extends Controller
 
     public function index()
     {
-
-        $user = Auth::user()->load('jobs');
-        $jobs = $user->jobs()->paginate(10);
+        $jobs = Job::paginate(10);
         $jobs->load('tags');
 
-        return Inertia::render('Dashboard/Client/Job',['user' => $user , 'jobs' => $jobs]);
+        return Inertia::render('Dashboard/Admin/Job/Index',['jobs' => $jobs]);
     }
 
     public function create()
     {
         $tags = Tag::all();
-        return Inertia::render('Dashboard/Client/NewJob',['tags' => $tags]);
+        return Inertia::render('Dashboard/Admin/Job/create',['tags' => $tags]);
     }
 
     public function store(JobRequest $request, JobService $jobService)

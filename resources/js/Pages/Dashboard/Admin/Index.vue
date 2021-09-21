@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-              <line-chart :chartdata="chartdata" :options="chartOptions"/>
+              <!-- <line-chart :chartdata="chartdata" :options="chartOptions"/> -->
         </div>
       </div>
     </div>
@@ -145,11 +145,11 @@
 </template>
 <script>
 import Layout from "../../Layouts/dashboard";
-import LineChart from "./Chart/LineChart.vue";
+// import LineChart from "./Chart/LineChart.vue";
 export default {
   components: {
     Layout,
-    LineChart
+    // LineChart
   },
 
   props: ["newers", "olders", "deleted", "role"],

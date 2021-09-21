@@ -374,12 +374,13 @@
 
 <script>
 export default {
-  props: ["title", "user", "role" , 'authuser'],
+  props: ["title", "role" , 'authuser'],
   data() {
     return {
       isOpen: false,
       account: false,
       loading: false,
+      user: this.$page.authadmin
     };
   },
 

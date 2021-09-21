@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Amin;
 
 use Carbon\Carbon;
 use App\Models\Job;
