@@ -1,4 +1,6 @@
 
+
+// import { chart } from 'chartjs'
 import { Line } from 'vue-chartjs'
 
 export default {
