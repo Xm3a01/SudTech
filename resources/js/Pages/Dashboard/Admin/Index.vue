@@ -135,6 +135,7 @@
                   <span class="whitespace-no-wrap"> </span>
                 </p>
               </div>
+              <line-chart :chartdata="newers" :options="chartOptions"/>
             </div>
           </div>
         </div>
@@ -144,9 +145,11 @@
 </template>
 <script>
 import Layout from "../../Layouts/dashboard";
+import LineChart from "./Chart/LineChart";
 export default {
   components: {
     Layout,
+    LineChart
   },
 
   props: ["newers", "olders", "deleted", "role"],
