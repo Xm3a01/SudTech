@@ -294,7 +294,7 @@
           class="overflow-hidden image-text py-auto cursor-pointer"
           @click="settingPanel"
         >
-          <img class="h-10 w-10 rounded-full" :src="user.avatar" alt="" />
+          <img class="h-10 w-10 rounded-full" :src="user.avatar ? user.avatar : '/images/noImage.png'" alt="" />
         </div>
       </nav>
       <div class="absolute right-0 mt-1 z-40" v-if="account">
@@ -305,11 +305,10 @@
             <div class="flex px-3 my-3 justify-center">
               <div
                 class="overflow-hidden image-text py-auto"
-                @click="settingPanel"
               >
                 <img
-                  class="h-20 w-20 rounded-full p-2"
-                  :src="user.avatar"
+                  class="rounded-full"
+                  :src="user.avatar ? user.avatar : '/images/noImage.png'"
                   alt=""
                 />
               </div>

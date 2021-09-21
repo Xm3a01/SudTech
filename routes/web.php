@@ -56,9 +56,7 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
 Route::get('email', 'MailController@index')->name('email');
 
 Route::group(['prefix' => 'admins/dashboard' , 'middleware' => 'auth:admin'], function () {
-    Route::get('/', function () {
-        return "Hi Admin";
-    })->name('admins.dashboard');
+    Route::get('/', 'Dashboard\Admin\IndexController@index')->name('admins.dashboard');
 });
 
 Route::any('test', function () {

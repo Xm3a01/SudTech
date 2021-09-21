@@ -149,6 +149,12 @@ export default {
     Layout,
   },
 
-  props: ["user", "newers", "olders", "deleted", "role"],
+  props: ["newers", "olders", "deleted", "role"],
+
+  data() {
+      return {
+          user:this.$page.authadmin
+      }
+  }
 };
 </script>
