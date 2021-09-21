@@ -43,6 +43,12 @@ class HandleInertiaRequests extends Middleware
                 $user['avatar'] = $user->avatar ?? "";
                 return $user;
              },
+
+             'authadmin' => function() {
+                $admin = Auth::guard('admin')->user();
+                $admin['avatar'] = $admin->avatar ?? "";
+                return $admin;
+             },
          ]);
     }
 }

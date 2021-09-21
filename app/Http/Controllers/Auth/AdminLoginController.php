@@ -55,7 +55,8 @@ class AdminLoginController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        if (Auth::guard('admin')->attempt(['email' => $request->phone, 'password' => $request->password])) {
+        // dd($request->email);
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('admins.dashboard');
         } else {
             return redirect()->back();

@@ -59,7 +59,7 @@ export default {
     methods:{
         login(){
             this.loading = true
-            this.$inertia.post('admins/login' , this.form)
+            this.$inertia.post('/admins/login' , this.form)
               .then(()=>{this.loading = false})
                  .catch((err)=>{console.log(err.getMessage())})
         }
