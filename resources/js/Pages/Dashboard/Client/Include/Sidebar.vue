@@ -86,7 +86,7 @@ export default {
     data() {
         return {
             // 0 , 1 ,2
-            trager: 1,
+            trager: '',
         }
     },
     methods: {
