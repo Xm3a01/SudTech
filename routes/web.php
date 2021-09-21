@@ -27,10 +27,6 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-// Admin
-Route::get('admins/login/form', 'Auth\AdminLoginController@showLoginForm')->name('admins.login.form');
-Route::post('admins/login', 'Auth\AdminLoginController@login')->name('admins.login');
-Route::get('admins/logout', 'Auth\AdminLoginController@logout')->name('admins.logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/job/show/{job}', 'JobController@show')->name('job.show');
@@ -54,23 +50,6 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function () {
     Route::get('users/paginate', 'Dashboard\UserController@paginate')->name('users.paginate');
 });
 Route::get('email', 'MailController@index')->name('email');
-
-Route::group(['prefix' => 'admins/dashboard' , 'middleware' => 'auth:admin'], function () {
-    Route::get('/', 'Dashboard\Admin\IndexController@index')->name('admins.dashboard');
-    Route::get('getData', 'Dashboard\JobController@getDate')->name('admins.getDate');
-    Route::get('getTrashData', 'Dashboard\TrashController@getTrashData')->name('admins.getTrashData');
-    Route::get('account/setting', 'Dashboard\UserController@acount')->name('admins.account.setting');
-    Route::post('editUser/{id}', 'Dashboard\UserController@editUser')->name('admins.editUser');
-    Route::resource('jobs', 'Dashboard\JobController')->except('update');
-    Route::post('jobs/update/{id}', 'Dashboard\JobController@update')->name('admins.job.update');
-    Route::resource('trash', 'Dashboard\TrashController');
-    Route::resource('users', 'Dashboard\UserController');
-    Route::post('users/update/{user}', 'Dashboard\UserController@update')->name('admins.users.update');
-    Route::resource('tags', 'Dashboard\TagController')->except('update');
-    Route::post('tags/update/{tag}', 'Dashboard\TagController@update')->name('admins.tags.update');
-    Route::get('tag/paginate', 'Dashboard\TagController@paginate')->name('admins.tag.paginate');
-    Route::get('users/paginate', 'Dashboard\UserController@paginate')->name('admins.users.paginate');
-});
 
 Route::any('test', function () {
     $jobs = Job::paginate(2);
