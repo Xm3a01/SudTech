@@ -133,7 +133,7 @@
               "
             >
               <inertia-link
-                href="/dashboard/jobs"
+                href="admins/dashboard/jobs"
                 @click="loading = true"
                 class="flex items-center"
               >
@@ -191,7 +191,7 @@
             "
           >
             <inertia-link
-              href="/dashboard/trash"
+              href="admins/dashboard/trash"
               class="flex items-center"
               @click="loading = true"
             >
@@ -325,7 +325,7 @@
             </a>
             <div class="h-px w-full bg-gray-300"></div>
             <inertia-link
-              :href="'/dashboard/account/setting'"
+              :href="'admins/dashboard/account/setting'"
               class="hover:text-gray-500"
             >
               <div class="flex px-3 my-2">
