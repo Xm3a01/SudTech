@@ -57,6 +57,19 @@ Route::get('email', 'MailController@index')->name('email');
 
 Route::group(['prefix' => 'admins/dashboard' , 'middleware' => 'auth:admin'], function () {
     Route::get('/', 'Dashboard\Admin\IndexController@index')->name('admins.dashboard');
+    Route::get('getData', 'Dashboard\JobController@getDate')->name('admins.getDate');
+    Route::get('getTrashData', 'Dashboard\TrashController@getTrashData')->name('admins.getTrashData');
+    Route::get('account/setting', 'Dashboard\UserController@acount')->name('admins.account.setting');
+    Route::post('editUser/{id}', 'Dashboard\UserController@editUser')->name('admins.editUser');
+    Route::resource('jobs', 'Dashboard\JobController')->except('update');
+    Route::post('jobs/update/{id}', 'Dashboard\JobController@update')->name('admins.job.update');
+    Route::resource('trash', 'Dashboard\TrashController');
+    Route::resource('users', 'Dashboard\UserController');
+    Route::post('users/update/{user}', 'Dashboard\UserController@update')->name('admins.users.update');
+    Route::resource('tags', 'Dashboard\TagController')->except('update');
+    Route::post('tags/update/{tag}', 'Dashboard\TagController@update')->name('admins.tags.update');
+    Route::get('tag/paginate', 'Dashboard\TagController@paginate')->name('admins.tag.paginate');
+    Route::get('users/paginate', 'Dashboard\UserController@paginate')->name('admins.users.paginate');
 });
 
 Route::any('test', function () {
